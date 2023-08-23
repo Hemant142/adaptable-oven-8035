@@ -61,16 +61,7 @@ export const Address = () => {
     }
 
     try {
-
-
       let key = "house_no";
-
-
-
-
-
-
-
       let UniqueAddCopy = [...ActiveUser.address, areaData]
       let uniqueAddress = [...new Map(UniqueAddCopy?.map((item: { [x: string]: any; }) =>
         [item[key], item])).values()]
@@ -80,12 +71,6 @@ export const Address = () => {
         address: [...uniqueAddress],
 
       };
-
-
-
-
-
-
       axios.put(`https://monkeyapi-2-0.onrender.com/users/${userId}`, updatedUser)
         .then((res) => dispatch({ type: LOGIN_SUCCESS, payload: res.data })
         )
@@ -93,7 +78,6 @@ export const Address = () => {
 
       //  console.log(response)
       // setLoggedInUser(updatedUser);
-
       navigate("/payment")
       toast({
         title: 'Address Success',
@@ -134,7 +118,8 @@ export const Address = () => {
 
       {
         ActiveUser.address.length !== 0 && ActiveUser.address[ActiveUser.address.length - 1].house_no
-          ? <h1>hello</h1> :
+          ?
+           <h1>hello</h1> :
 
           <DIV>
 
