@@ -118,7 +118,8 @@ export const Address = () => {
 
       {
         ActiveUser.address.length !== 0 && ActiveUser.address[ActiveUser.address.length - 1].house_no
-          ? <h1>hello</h1> :
+          ?
+           <h1>hello</h1> :
 
           <DIV>
 
