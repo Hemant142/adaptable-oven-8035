@@ -79,7 +79,7 @@ export const SingleUser = () => {
                   Address Details
                 </Heading>
 
-                {address ? (
+                {address && address.length >0 ? (
                   <div>
                     <p>
                       <b>Name :</b>
@@ -118,6 +118,7 @@ export const SingleUser = () => {
           <br />
 
           <HStack spacing="24px">
+{/* <=============================================== Product of Cart=================================================>           */}
             <Card
               width={"50%"}
               style={{
@@ -175,7 +176,7 @@ export const SingleUser = () => {
                 </div>
               </CardBody>
             </Card>
-
+{/* <==============================================OrderDetails===============================================> */}
             <Card width={"50%"} style={{ backgroundColor: "#d2f8d7" }}>
               <CardBody>
                 <Heading as="h4" size="md">

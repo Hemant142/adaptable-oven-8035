@@ -55,7 +55,7 @@ const handleSubmit=(e:React.MouseEvent<HTMLButtonElement> )=>{
       ...ActiveUser,
       address: [...ActiveUser.address, areaData],
     };
-   axios.put(`https://monkeyapi-2-0.onrender.com/users/${userId}`, updatedUser)
+   axios.patch(`https://monkeyapi-2-0.onrender.com/users/${userId}`, updatedUser)
    .then((res)=>dispatch({type:LOGIN_SUCCESS,payload:res.data})
    )
    

@@ -15,16 +15,18 @@ const Loginpage = () => {
    const toast = useToast();
    const [credentials,setCredentials] = useState({email:"",password:""});
    const dispatch: Dispatch<any> =useDispatch();
-   const AllUser =useSelector((store:any)=>store.authReducer.Users);
+   
    const navigate = useNavigate()
    const location = useLocation();
-  console.log(AllUser,"log");
+   let  AllUser =useSelector((store:any)=>store.authReducer.Users);
    useEffect(() => {
    
    dispatch(getUsers())
+   
    // getUsers(dispatch)
    
-   },[])
+   }, [dispatch, AllUser])
+   console.log(AllUser,"log");
    // const store =useSelector((store)=>store)
    // console.log(store)
   const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {

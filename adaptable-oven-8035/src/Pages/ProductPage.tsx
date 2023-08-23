@@ -83,6 +83,7 @@ const ProductPage = () => {
     <div>
       <Navbar />
       <img src={ProductImg} alt="" style={{ height: "400px", width: "100%" }} />
+      
       <DIV>
         {name == "Watches" ? <div className="sidebar">
           <SideBarWatches />
@@ -101,6 +102,8 @@ const ProductPage = () => {
         </div>
 
       </DIV>
+
+
       <Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} />
       <div>
         <Footer />

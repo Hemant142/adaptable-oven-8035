@@ -67,6 +67,9 @@ let userPrasent = AllUser.find((el:UserObject)=>{
     })
      }else{
       dispatch(SignUp(user))
+     
+
+      
       // alert("your registration is successful")
       setUser({ name:"",
     email: "",password: "",addToCart:[],
