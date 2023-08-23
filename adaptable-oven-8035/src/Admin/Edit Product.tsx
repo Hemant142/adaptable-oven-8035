@@ -48,14 +48,15 @@ const EditPage = () => {
     setRating(Data.rating);
     setName(Data.name)
     // setDisplay(Data)
-  }, [])
+    // handleUpdate
+  }, [updatedData,data,])
 
   const handleUpdate = () => {
     const newData = { price: +price, name: name, avatar: avatar, category: category, brand: brand, rating: +rating };
     axios
       .patch(`https://monkeyapi-2-0.onrender.com/products/${id}`, newData)
       .then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         toast({
           title: 'Save Success',
           description: 'Product Changed successfully',
@@ -67,6 +68,8 @@ const EditPage = () => {
       navigate("/a/AllProduct")
     console.log(newData, "NewData")
   }
+  // handleUpdate
+  
 
   console.log(updatedData, "upadtedDaat")
   return (

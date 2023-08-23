@@ -19,8 +19,8 @@ const App: React.FC = () => {
   const data = useSelector((state: any) => state.data.data);
   const error = useSelector((state: any) => state.data.error);
 const totalP=useSelector((state: any) => state.data.totalP);
+console.log(data,"DATA")
 
-console.log(data,"AllProducts")
 
 
 ///******************* */ totalPage******************* */
@@ -29,12 +29,13 @@ const [page,setPage]=useState(1)
 let totalPage=Math.ceil(totalP.length/20)
 useEffect(()=>{
 dispatch(fetchPage())
-},[])
+},[data])
+console.log(data,"AllProducts")
 ///******************* */ totalPage******************* */
 
   useEffect(() => {
     dispatch(fetchData(page));
-  }, [dispatch,page]);
+  }, [dispatch,page,data]);
 
   const handleDelete = (id: number): void => {
     // Dispatch the deleteData action with the item ID to delete the data

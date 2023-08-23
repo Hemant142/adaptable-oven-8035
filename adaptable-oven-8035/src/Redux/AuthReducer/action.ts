@@ -15,11 +15,13 @@ export const getUsers = () => {
    }
 }
 
-export const SignUp = (newUser: UserObject) => (dispatch: Dispatch<{ type: string } | { type: string, payload: UserObject[] }>) => {
-   dispatch({ type: LOGIN_REQUEST });
-   axios.post(`https://monkeyapi-2-0.onrender.com/users`, newUser).
-      then((response) => { dispatch({ type: SIGNUP_SUCCESS, payload: response.data }) }).catch(() => {
-         dispatch({ type: LOGIN_FAILURE });
+export const SignUp= (newUser:UserObject)=>(dispatch:Dispatch<{type:string}|{type:string,payload:UserObject[]}>)=>{
+   dispatch({type:LOGIN_REQUEST});
+   return axios
+   .post(`https://monkeyapi-2-0.onrender.com/users`,newUser).
+   then((response)=>{ dispatch({type:SIGNUP_SUCCESS,payload:response.data})}).catch(()=>{
+    dispatch({type:LOGIN_FAILURE});
+
 
       });
 }

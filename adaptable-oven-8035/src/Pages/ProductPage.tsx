@@ -88,6 +88,9 @@ const ProductPage = () => {
   return (
     <div>
       <Navbar />
+
+      
+
       <img src={ProductImg} alt="" style={{width:"100%",height:"400px",objectFit:"fill" }} />
       {
         <div className={Styles.filterSection}>
@@ -104,6 +107,7 @@ const ProductPage = () => {
       <div className={Styles.productsection}>
        
         {name == "Watches" ? <div className={Styles.sidebar}>
+
           <SideBarWatches />
         </div> : <div className={Styles.sidebar}>
           <SideBarJewelry />
@@ -119,7 +123,9 @@ const ProductPage = () => {
 
         </div>
 
+
       </div>
+
       <Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} />
       <div>
         <Footer />
