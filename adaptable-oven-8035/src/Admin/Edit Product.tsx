@@ -26,7 +26,7 @@ const EditPage = () => {
   let itemId = Number(id);
   const navigate =useNavigate();
   const data = useSelector((state: any) => state.data.data);
-  const [Display, setDisplay] = useState([])
+  const[Display, setDisplay] = useState([])
   const [avatar, setavatar] = useState("")
   const [price, setPrice] = useState(0);
   const [about, setabout] = useState("");
@@ -35,7 +35,7 @@ const EditPage = () => {
   const [rating, setRating] = useState(0);
   const [name, setName] = useState("")
 
-  console.log("avatar", avatar, data)
+  //console.log("avatar", avatar, data)
   const [updatedData, setUpdatedData] = useState([])
   const dispatch = useDispatch()
   useEffect(() => {
