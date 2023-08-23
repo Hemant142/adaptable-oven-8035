@@ -23,9 +23,6 @@ const users = useSelector((state: any) => state.data.user);
 
 console.log(users);
 
-
-
-
   useEffect(()=>{
     dispatch(fetchUserData)
 

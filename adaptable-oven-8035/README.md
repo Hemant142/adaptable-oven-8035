@@ -5,10 +5,6 @@
 Precious Charms is an e-commerce website specializing in jewelry, watches, and accessories. Users can easily browse a wide range of products, utilizing filters by category and brand, as well as sorting options based on price. The platform offers a seamless shopping experience, allowing users to add items to their cart and make purchases effortlessly. The website also includes an Admin section, providing administrative privileges such as adding, editing, and deleting products, as well as accessing user details. Built using React, TypeScript, and Chakra UI, Precious Charms promises a user-friendly interface with a focus on functionality and aesthetics.
 
 
-## Deployed Link
-[Netlify Deployed Link:  PRECIOUS CHARMS](https://hilarious-moonbeam-a71ec5.netlify.app/)
-
-
 
 ## Tech Stack
 <div>
@@ -19,7 +15,7 @@ Precious Charms is an e-commerce website specializing in jewelry, watches, and a
  <img src="https://img.shields.io/badge/HTML5-text?style=for-the-badge&logo=HTML5&color=2b3b35" />
   <img src="https://img.shields.io/badge/javascript-text?style=for-the-badge&logo=javascript&color=204456" />
 </div>
-
+c
 
 
 ## Features
