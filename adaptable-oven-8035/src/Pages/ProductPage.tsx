@@ -1,4 +1,4 @@
-
+import Styles from "../Pages/ProductPage.module.css"
 import React, { useEffect, useState } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../Redux/ProductReducer/action';
@@ -18,6 +18,14 @@ import Pagination from '../Components/Pegination';
 const ProductPage = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
+
+  const width  = window.innerWidth || document.documentElement.clientWidth || 
+  document.body.clientWidth;
+  const height = window.innerHeight|| document.documentElement.clientHeight|| 
+  document.body.clientHeight;
+  
+  // console.log(width, height,"hey");
+  const [toggle,setToggle]=useState(false);
   const { name } = useParams()
   const [searchParams, setSearchParams] = useSearchParams()
   // console.log(products)
@@ -77,22 +85,36 @@ const ProductPage = () => {
   // const totalPages = Math.ceil(products.length / 12);
   // console.log(totalPages, "total page");
 
-
-
   return (
     <div>
       <Navbar />
-      <img src={ProductImg} alt="" style={{ height: "400px", width: "100%" }} />
+
       
-      <DIV>
-        {name == "Watches" ? <div className="sidebar">
+
+      <img src={ProductImg} alt="" style={{width:"100%",height:"400px",objectFit:"fill" }} />
+      {
+        <div className={Styles.filterSection}>
+          <button onClick={()=>{console.log("heyyy")}}>Filter by Products</button>
+ {
+      toggle&&name == "Watches" ? <div className={Styles.filterby}>
           <SideBarWatches />
-        </div> : <div className="sidebar">
+        </div> : toggle&&<div className={Styles.filterby}>
+          <SideBarJewelry />
+        </div>}
+
+        </div>
+       }
+      <div className={Styles.productsection}>
+       
+        {name == "Watches" ? <div className={Styles.sidebar}>
+
+          <SideBarWatches />
+        </div> : <div className={Styles.sidebar}>
           <SideBarJewelry />
         </div>}
 
 
-        <div className="product-list">
+        <div className={Styles.productlist}>
           {isError && <h1>Error Occurs</h1>}
           {isLoading && <h1>Loading...</h1>}
           {products.length > 0 &&
@@ -101,8 +123,8 @@ const ProductPage = () => {
 
         </div>
 
-      </DIV>
 
+      </div>
 
       <Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} />
       <div>
@@ -113,68 +135,5 @@ const ProductPage = () => {
   )
 }
 
-const DIV = styled.div`
-display: flex;
-gap: 10px;
-background-color:#f9f9f9;
-.sidebar{
-  margin-top: 30px;
-  margin-bottom: 60px;
- 
-  width: 15%;
-  margin-left: 10px;
-
-}
-
-.product-list{
-  width: 85%;
-  height:auto;
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-grid-gap: 40px;
-margin: 10px;
-margin-top: 30px;
-  margin-bottom: 60px; 
-
-}
-
-@media screen and (min-device-width: 320px) and (max-device-width: 567px) { 
-
-  display: flex;
-  flex-direction: column;
-  .sidebar{
- width:100%;
- }
-
- .product-list{
-  
-  grid-template-columns: repeat(1,1fr);
-  grid-gap: 30px;
-}
-}
-
-@media screen and (min-device-width: 568px) and (max-device-width: 776px) { 
-
-display: flex;
-flex-direction: column;
-.sidebar{
-width:100%;
-}
-
-.product-list{
-width: 85%;
-display: grid;
-grid-template-columns: repeat(2,1fr);
-grid-gap: 20px;
-margin: 10px;
-margin-top: 30px;
-margin-bottom: 60px; 
-
-}
-}
-
-
-
-`
 
 export default ProductPage

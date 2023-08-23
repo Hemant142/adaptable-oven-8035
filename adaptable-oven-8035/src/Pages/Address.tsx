@@ -1,7 +1,7 @@
 import axios from "axios";
 import { initial } from "lodash";
 import React, { useEffect } from "react";
-import  { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -12,10 +12,19 @@ import Footer from "../Components/Footer";
 import { useToast } from "@chakra-ui/toast";
 import { response } from "express";
 import { LOGIN_SUCCESS } from "../Redux/AuthReducer/actionType";
+// import { AnyAaaaRecord } from "dns";
 
 
+interface InitialState {
+  name: string;
+  mobile_number: string;
+  pincod: string;
+  house_no: string;
+  area: string;
+  town: string;
+}
 
-const initalState = {
+const initalState: InitialState = {
   name: "",
   mobile_number: "",
   pincod: "",
@@ -25,131 +34,160 @@ const initalState = {
 };
 
 
-export const  Address =()=>{
+export const Address = () => {
   const [areaData, setareaData] = useState(initalState);
 
-  console.log("Address")
-  const userId =useSelector((store:any)=>store.authReducer.ActiveUser.id);
-  const ActiveUser=useSelector((store:any)=>store.authReducer.ActiveUser);
-  const navigate=useNavigate();
+  // console.log("Address")
+  const userId = useSelector((store: any) => store.authReducer.ActiveUser.id);
+  const ActiveUser = useSelector((store: any) => store.authReducer.ActiveUser);
+  const navigate = useNavigate();
   const toast = useToast();
-const dispatch=useDispatch()
+  const dispatch = useDispatch()
 
-const handleChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
-  const {value,name}=e.target;
-  setareaData((prev)=>{
-      return {...prev,[name]:value}
-  })
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = e.target;
+    setareaData((prev) => {
+      return { ...prev, [name]: value }
+    })
 
+  }
+  // console.log(ActiveUser.address[0].house_no, "AUser")
+
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (!userId) {
+      alert("Please login first");
+      return;
+    }
+
+    try {
+
+
+      let key = "house_no";
+
+
+
+
+
+
+
+      let UniqueAddCopy = [...ActiveUser.address, areaData]
+      let uniqueAddress = [...new Map(UniqueAddCopy?.map((item: { [x: string]: any; }) =>
+        [item[key], item])).values()]
+
+      const updatedUser = {
+        ...ActiveUser,
+        address: [...uniqueAddress],
+
+      };
+
+
+
+
+
+
+      axios.put(`https://monkeyapi-2-0.onrender.com/users/${userId}`, updatedUser)
+        .then((res) => dispatch({ type: LOGIN_SUCCESS, payload: res.data })
+        )
+
+
+      //  console.log(response)
+      // setLoggedInUser(updatedUser);
+
+      navigate("/payment")
+      toast({
+        title: 'Address Success',
+        description: 'your address is added successful.',
+        status: 'success',
+        duration: 2000,
+        isClosable: true,
+      });
+    } catch (error) {
+      console.error("Failed to add address to address", error);
+    }
+    // dispatch(postProduct(productData)) 
+    setareaData(initalState)
+  }
+  // console.log(areaData,"Area")
+  // console.log(ActiveUser, "userId")
+
+
+  useEffect(() => {
+    const ad = ActiveUser.address
+    // console.log(ad[ad.length-1])
+    if (ActiveUser.address.length !== 0) {
+      setareaData(ad[ad.length - 1])
+    }
+
+
+
+  }, [])
+
+
+  console.log(ActiveUser.address.length !== 0 && ActiveUser.address[ActiveUser.address.length - 1].house_no, "AUser")
+
+  return (
+
+    <div>
+      <Navbar />
+
+
+      {
+        ActiveUser.address.length !== 0 && ActiveUser.address[ActiveUser.address.length - 1].house_no
+          ? <h1>hello</h1> :
+
+          <DIV>
+
+            <div className="background-image" style={{
+              backgroundImage: `url("https://thegoldmarket.co.uk/wp-content/uploads/2017/01/jewellery-background.jpg")`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              height: "800px",
+              border: "1px solid black",
+            }}>
+              <div className="address-form">
+                <h2>Shipping Address</h2>
+                <form>
+
+
+                  <div className="form-group">
+                    <label htmlFor="name" >Full Name</label>
+                    <input type="text" id="name" required name="name" value={areaData.name} onChange={handleChange} />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="address">Mobile number</label>
+                    <input type="text" id="address" required name="mobile_number" value={areaData.mobile_number} onChange={handleChange} />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="city">Pincode</label>
+                    <input type="text" id="city" required name="pincod" value={areaData.pincod} onChange={handleChange} />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="zip">Flat, House no., Building, Company, Apartment</label>
+                    <input type="text" id="zip" required name="house_no" value={areaData.house_no} onChange={handleChange} />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="country">Area, Street, Sector, Village</label>
+                    <input type="text" id="country" required name="area" value={areaData.area} onChange={handleChange} />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="country">Town/City</label>
+                    <input type="text" id="country" required name="town" value={areaData.town} onChange={handleChange} />
+                  </div>
+                  <Link to={"/payment"}> <button type="submit" onClick={handleSubmit}>Proceed to Payment</button></Link>
+
+                </form>
+              </div>
+            </div>
+          </DIV>
+
+      }
+      <Footer />
+    </div>
+  )
 }
 
-const handleSubmit=(e:React.MouseEvent<HTMLButtonElement> )=>{
-  e.preventDefault();
-  if (!userId) {
-    console.log("Please login first");
-    return;
-  }
-
-  try {
-    const updatedUser = {
-      ...ActiveUser,
-      address: [...ActiveUser.address, areaData],
-    };
-   axios.patch(`https://monkeyapi-2-0.onrender.com/users/${userId}`, updatedUser)
-   .then((res)=>dispatch({type:LOGIN_SUCCESS,payload:res.data})
-   )
-   
-
-  //  console.log(response)
-    // setLoggedInUser(updatedUser);
-   
-    navigate("/payment")
-    toast({
-      title: 'Address Success',
-      description: 'your address is added successful.',
-      status: 'success', 
-      duration: 2000,  
-      isClosable: true, 
-    });
-  } catch (error) {
-    console.error("Failed to add address to address", error);
-  }
-  // dispatch(postProduct(productData)) 
-  setareaData(initalState)
-}
-// console.log(areaData,"Area")
-console.log(ActiveUser,"userId")
-
-
-useEffect(()=>{
- const ad=ActiveUser.address
-  // console.log(ad[ad.length-1])
-  if(ActiveUser.address.length!==0){
-    setareaData(ad[ad.length-1])
-  }
- 
-  
-
-},[])
-console.log(areaData,"areaData")
-    return (
-
-<div>
-<Navbar/>
-
-
-        <DIV>
-     
-        <div  className="background-image" style={{ backgroundImage: `url("https://thegoldmarket.co.uk/wp-content/uploads/2017/01/jewellery-background.jpg")`,
-                 backgroundRepeat:"no-repeat",
-                 backgroundSize:"cover",
-                 height:"800px",
-                  border:"1px solid black",
-              }}>
-           <div className="address-form">
-             <h2>Shipping Address</h2>
-             <form>
-            
-             
-               <div className="form-group">
-                 <label htmlFor="name" >Full Name</label>
-                 <input type="text" id="name" required  name="name" value={areaData.name} onChange={handleChange}/>
-               </div>
-               <div className="form-group">
-                 <label htmlFor="address">Mobile number</label>
-                 <input type="text" id="address" required name="mobile_number"  value={areaData.mobile_number} onChange={handleChange}/>
-               </div>
-               <div className="form-group">
-                 <label htmlFor="city">Pincode</label>
-                 <input type="text" id="city" required name="pincod"  value={areaData.pincod} onChange={handleChange} />
-               </div>
-               <div className="form-group">
-                 <label htmlFor="zip">Flat, House no., Building, Company, Apartment</label>
-                 <input type="text" id="zip" required  name="house_no" value={areaData.house_no} onChange={handleChange}/>
-               </div>
-               <div className="form-group">
-                 <label htmlFor="country">Area, Street, Sector, Village</label>
-                 <input type="text" id="country" required name="area"  value={areaData.area} onChange={handleChange}/>
-               </div>
-               <div className="form-group">
-                 <label htmlFor="country">Town/City</label>
-                 <input type="text" id="country" required name="town"  value={areaData.town} onChange={handleChange}/>
-               </div>
-              <Link to={"/payment"}> <button type="submit" onClick={handleSubmit}>Proceed to Payment</button></Link> 
-              
-             </form>
-           </div>
-         </div>
-         </DIV>
-<Footer/>
-         </div>
-    )
-}
-
-const DIV=styled.div`
-
-  
-  
+const DIV = styled.div`
 
   .background-image {
   height: 1000px;

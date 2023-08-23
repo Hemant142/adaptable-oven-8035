@@ -182,14 +182,7 @@ export default function SideBarWatches() {
     };
     
     const SidebarContainer = styled.div`
-  /* padding: 0 10px;
-  border-right: 1px solid gray;
  
-  width: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; */
-
   .radio{
     display: flex;
    

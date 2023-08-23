@@ -1,0 +1,218 @@
+.productsection{
+    display: flex;
+    gap: 10px;
+    background-color:#f9f9f9;
+    /* background-color: green; */
+}
+
+.sidebar{
+  margin-top: 30px;
+  margin-bottom: 60px;
+  width: 15%;
+  margin-left: 10px;
+  /* background-color: red;; */
+}
+.filterby{
+  display: none;
+  margin-top: 30px;
+  margin-bottom: 60px;
+  width: 15%;
+  margin-left: 10px;
+}
+.productlist{
+ width:80%;
+  height:auto;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+grid-gap: 40px;
+margin: 10px;
+margin-top: 30px;
+  margin-bottom: 60px; 
+
+}
+
+.filterSection{
+  width:100%;
+  display:none;
+  background-color: blueviolet;
+}
+.filterSection>button{
+  margin-top: 100px;
+  background-color: white;
+
+}
+@media screen and (min-device-width: 320px) and (max-device-width: 639px) { 
+  .ProductBanner{
+    width:100%;
+    /* height:450px;
+    object-fit: cover; */
+  }
+    .productsection{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color:#f9f9f9;
+        justify-content: space-between;
+        /* background-color: green; */
+    }
+     
+    .filterSection{
+      display:block;
+    }
+    .filterby{
+      display: block;
+    }
+    .sidebar{
+      display: none;
+    }
+    
+    .productlist{
+    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:5px;
+    margin:auto;
+    padding-bottom: 15px;
+    /* background-color: aqua; */
+    }
+  }
+  
+  @media screen and (min-device-width: 640px) and (max-device-width: 799px) { 
+    .ProductBanner{
+      width:100%;
+      height:450px;
+     
+    }
+    .filterSection{
+      display:block;
+      height:200px;
+    }
+    .filterby{
+      display: block;
+    }
+    .sidebar{
+      display: none;
+    }
+    .productsection{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color:#f9f9f9;
+        justify-content: space-between;
+        /* background-color: green; */
+    }
+     
+  
+    .sidebar{
+    width:100%;
+    }
+    
+    .productlist{
+    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:8px;
+    margin:auto;
+    padding-bottom: 15px;
+    /* background-color: aqua; */
+    }
+  }
+
+@media screen and (min-width:800px) and (max-width:1075px) {
+  .ProductBanner{
+    width:100%;
+    height:450px;
+   
+  }
+    .productsection{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color:#f9f9f9;
+        justify-content: space-between;
+        /* background-color: green; */
+    }
+      .filterSection{
+      display:block;
+    }
+    .filterby{
+      display: block;
+    }
+    .sidebar{
+      display: none;
+    }
+    
+    .productlist{
+    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:8px;
+    margin:auto;
+    padding-bottom: 15px;
+    /* background-color: aqua; */
+    }
+}
+  
+  @media screen and (min-device-width: 1076px) and (max-device-width: 1200px) {
+    .ProductBanner{
+      width:100%;
+      height:450px;
+     
+    }
+    .productsection{
+        display: flex;
+        gap: 10px;
+        /* background-color:#f9f9f9; */
+        justify-content: space-between;
+        /* background-color: green; */
+    }
+     
+    /* .filterSection{
+      display:block;
+    }
+    .filterby{
+      display: block;
+    }
+    .sidebar{
+      display: none;
+    } */
+    
+    .productlist{
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin:auto;
+    padding-bottom: 15px; 
+    /* background-color: aqua; */
+    }
+    }
+
+    @media screen and (min-width:1201px) {
+      .ProductBanner{
+        width:100%;
+        height:70%;
+       
+      }
+      .productsection{
+          display: flex;
+          gap: 10px;
+          /* background-color:#f9f9f9; */
+          justify-content: space-between;
+          /* background-color: green; */
+      }
+       
+    
+      .sidebar{
+      width:15%;
+      }
+      
+      .productlist{
+      width: 80%;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      margin: 10px;
+      margin-top: 30px;
+      margin-bottom: 60px; 
+      /* background-color: aqua; */
+      }
+    }

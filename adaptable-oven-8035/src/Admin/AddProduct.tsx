@@ -1,15 +1,39 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from './AdminNavbar'
 import styled from "styled-components"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { postProduct } from '../Redux/AdminReducer/action';
 import { Center, Heading, useToast } from '@chakra-ui/react';
-
+import {
+    FormControl,
+    FormLabel,
+    Input,
+    Select,
+    Button,
+    Card,
+    Divider,
+    CardBody,
+    
+    Stack,
+    Image,
+    Text
+  } from '@chakra-ui/react'
+import { useNavigate, useParams } from 'react-router-dom';
 
 export const AddProduct = () => {
-
+    let { id } = useParams();
+    
+    let itemId = Number(id);
+    const navigate =useNavigate();
+    const data = useSelector((state: any) => state.data.data);
     const dispatch = useDispatch();
 const toast =useToast();
+const[Display, setDisplay] = useState([])
+  const [avatar, setavatar] = useState("")
+  const [price, setPrice] = useState(0);
+  const [description, setDescription] = useState("");
+  const [rating, setRating] = useState(0);
+  const [name, setName] = useState("")
 interface productObj{
     name: string
     price: string
@@ -32,6 +56,20 @@ const initialState :productObj={
     info:""
 }
 const [productData,setProductData]=useState(initialState)
+// useEffect(() => {
+//     let Data = data.find((el: any) => el.id == itemId);
+//     setavatar(Data.avatar)
+//     setPrice(Data.price);
+//     setDescription(Data.description);
+    
+
+//     setRating(Data.rating);
+//     setName(Data.name)
+//     // setDisplay(Data)
+//   }, [])
+useEffect(()=>{
+
+},[])
 
 const handleChange=(e:React.ChangeEvent<HTMLSelectElement>)=>{
     const { name, value}=e.target
@@ -69,7 +107,41 @@ const handleSubmit=(e:React.FormEvent<HTMLFormElement>)=>{
         <Navbar/>
 
         <DIV>
+            <div className='useFlex'>
+       <div className='leftBox' >
+       <Card maxW='sm' style={{borderRadius: "20px",height:"620px"}}>
+            <CardBody>
 
+              
+              <Heading style={{ textAlign: "center" }} size='md'>Id: </Heading>
+              <Stack mt='6' spacing='3'>
+                <Heading style={{ textAlign: "center" }} size='sm'>Name: </Heading>
+                
+
+                
+                <Heading size='sm' style={{ textAlign: "center" }}>
+                  Price:  ₹
+                </Heading>
+                <Text style={{ textAlign: "center" }}>
+                  Description: 
+                </Text>
+                <Text color='blue.600' fontSize='sm' style={{ textAlign: "center" }}>
+                  Rating :
+                </Text>
+              </Stack>
+              <hr/>
+              <hr/>
+              <Image style={{ width: "300px", height: "200px",  }}
+                src=""
+                alt='Green double couch with wooden legs'
+                borderRadius='sm'
+              />
+            </CardBody>
+            <Divider />
+          </Card>
+
+       </div>
+       <div className='rightBox' >
             <form className='formclass' onSubmit={handleSubmit}>
 
             <Center  h='50px' >
@@ -185,7 +257,8 @@ const handleSubmit=(e:React.FormEvent<HTMLFormElement>)=>{
 
                 <button type='submit'>Add Product</button>
             </form>
-            
+            </div>
+           </div> 
         </DIV>
 
     </div>
@@ -194,6 +267,19 @@ const handleSubmit=(e:React.FormEvent<HTMLFormElement>)=>{
 
 
 const DIV=styled.div`
+.useFlex{
+    display:flex;
+}
+
+.leftBox{
+    padding-top:60px;
+    padding-left:100px;
+    width:800px;
+}
+.rightBox{
+    padding-top:50px;
+    width:500px
+}
 .formclass{
     width:50%;
     margin: 0 auto;
@@ -201,6 +287,7 @@ const DIV=styled.div`
     margin-top:30px;
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    padding-left:100px;
     padding: 10px;
 }
 input,select,textarea{

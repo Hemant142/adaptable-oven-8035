@@ -18,7 +18,11 @@ const Loginpage = () => {
    
    const navigate = useNavigate()
    const location = useLocation();
+
    let  AllUser =useSelector((store:any)=>store.authReducer.Users);
+
+//   console.log(AllUser,"log");
+
    useEffect(() => {
    
    dispatch(getUsers())
