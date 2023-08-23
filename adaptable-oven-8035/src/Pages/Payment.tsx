@@ -17,7 +17,7 @@ export const Payment = () => {
   const ActiveUser=useSelector((store:any)=>store.authReducer.ActiveUser);
   const cartItem =useSelector((store:any)=>store.authReducer.ActiveUser.addToCart);
   const navigte=useNavigate()
-  console.log(ActiveUser,"payment")
+  // console.log(ActiveUser,"payment")
   const handleOpen = () => {
     setIsOpen(true);
     const updatedOrder={...ActiveUser,

@@ -84,7 +84,7 @@ setTax (taxcut)
 </div>
 <div>
 {cartItem==undefined ||cartItem.length==0?<div className='emptycart'>YOUR BAG IS EMPTY</div>: cartItem?.map((el:ProductObject)=>{
-  return <Box borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" p={4}>
+  return <Box key={el.id} borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" p={4}>
   <div style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}} >
     <Box width="200px" p="10px" >
    <Image src={el.avatar} alt={el.name}  boxSize="200px" objectFit="cover" mr={4} />
