@@ -50,43 +50,47 @@ export const AddProduct = () => {
     about: "",
     category: "",
     brand: "",
-    rating: "",
-    avatar: "",
-    info: "",
-  };
-  const [productData, setProductData] = useState(initialState);
-  // useEffect(() => {
-  //     let Data = data.find((el: any) => el.id == itemId);
-  //     setavatar(Data.avatar)
-  //     setPrice(Data.price);
-  //     setDescription(Data.description);
 
-  //     setRating(Data.rating);
-  //     setName(Data.name)
-  //     // setDisplay(Data)
-  //   }, [])
-  useEffect(() => {}, []);
+    rating:"" ,
+    avatar:"",
+    info:"",
+    
+}
+const [productData,setProductData]=useState(initialState)
+// useEffect(() => {
+//     let Data = data.find((el: any) => el.id == itemId);
+//     setavatar(Data.avatar)
+//     setPrice(Data.price);
+//     setDescription(Data.description);
+    
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setProductData((prev) => {
-      return { ...prev, [name]: value };
-    });
-  };
+//     setRating(Data.rating);
+//     setName(Data.name)
+//     // setDisplay(Data)
+//   }, [])
+useEffect(()=>{
 
-  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setProductData((prev) => {
-      return {
-        ...prev,
-        [name]: name === "price" || name === "rating" ? +value : value,
-      };
-    });
-  };
+},[])
 
-  console.log(productData);
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+const handleChange=(e:React.ChangeEvent<HTMLSelectElement>)=>{
+    const { name, value}=e.target
+    setProductData((prev)=>{
+      return {...prev,[name]:value}
+    })
+    
+}
+
+const handleTextChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
+    const { name, value}=e.target
+    setProductData((prev)=>{
+        return { ...prev, [name]: name === "price" || name === "rating" ? +value : value };
+    })
+}
+
+console.log(productData);
+const handleSubmit=(e:React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault()
+
     dispatch(postProduct(productData));
     toast({
       title: "Adding Success",
@@ -100,50 +104,57 @@ export const AddProduct = () => {
 
   return (
     <div>
-      <Navbar />
 
-      <DIV>
-        <div className="useFlex">
-          <div className="leftBox">
-            <Card maxW="sm" style={{ borderRadius: "20px", height: "620px" }}>
-              <CardBody>
-                <Heading style={{ textAlign: "center" }} size="md">
-                  Id:{" "}
+        <Navbar/>
+
+        <DIV>
+            <div className='useFlex'>
+       <div className='leftBox' >
+       <Card maxW='sm' style={{borderRadius: "20px",height:"620px"}}>
+            <CardBody>
+
+              
+              <Heading style={{ textAlign: "center" }} size='md'>Id: </Heading>
+              <Stack mt='6' spacing='3'>
+                <Heading style={{ textAlign: "center" }} size='sm'>Name:{productData.name} </Heading>
+                
+
+                
+                <Heading size='sm' style={{ textAlign: "center" }}>
+                  Price:  ₹{productData.price}
                 </Heading>
-                <Stack mt="6" spacing="3">
-                  <Heading style={{ textAlign: "center" }} size="sm">
-                    Name:{" "}
-                  </Heading>
+                <Text style={{ textAlign: "center" }}>
+                  Description: {productData.about}
+                </Text>
+                <Text style={{ textAlign: "center" }}>
+                  Category: {productData.category}
+                </Text>
+                <Text style={{ textAlign: "center" }}>
+                  Brand: {productData.brand}
+                </Text>
+                <Text color='blue.600' fontSize='sm' style={{ textAlign: "center" }}>
+                  Rating :{productData.rating}
+                </Text>
+              </Stack>
+              <hr/>
+              <hr/>
+              <Image style={{ width: "300px", height: "200px",  }}
+                src={productData.avatar}
+                alt='Please Add Image'
+                borderRadius='sm'
+              />
+            </CardBody>
+            <Divider />
+          </Card>
 
-                  <Heading size="sm" style={{ textAlign: "center" }}>
-                    Price: ₹
-                  </Heading>
-                  <Text style={{ textAlign: "center" }}>Description:</Text>
-                  <Text
-                    color="blue.600"
-                    fontSize="sm"
-                    style={{ textAlign: "center" }}
-                  >
-                    Rating :
-                  </Text>
-                </Stack>
-                <hr />
-                <hr />
-                <Image
-                  style={{ width: "300px", height: "200px" }}
-                  src=""
-                  alt="Green double couch with wooden legs"
-                  borderRadius="sm"
-                />
-              </CardBody>
-              <Divider />
-            </Card>
-          </div>
-          <div className="rightBox">
-            <form className="formclass" onSubmit={handleSubmit}>
-              <Center h="50px">
-                <Heading as="h4" size="md">
-                  Add Products
+       </div>
+       <div className='rightBox' >
+            <form className='formclass' onSubmit={handleSubmit}>
+
+            <Center  h='50px' >
+                    <Heading as='h4' size='md' style={{color:'white'}} >
+                            Add Products
+
                 </Heading>
               </Center>
 
@@ -171,7 +182,58 @@ export const AddProduct = () => {
                 placeholder="Enter Product Description"
                 value={productData.about}
                 onChange={handleTextChange}
-              />
+
+                />
+
+        {
+            productData.name=="Watches" && (
+                <select name="category"  value={productData.category}  onChange={handleChange}>
+                        <option value="">Select Product Category for watch</option>
+
+                <option value="Men's watch">Men's watch</option>
+                <option value="Women's watch">Women's watch</option>
+            </select>
+            )
+        }
+
+{
+    productData.name=="Jewelry" && (
+        <select name="category"  value={productData.category}  onChange={handleChange}>
+        <option value="">Select Product Category for jewellery</option>
+        <option value="Rings">Rings</option>
+        <option value="Brecelets">Brecelets</option>
+        <option value="Earrning">Earrning</option>
+        <option value="Necklaces & Pendants">Necklaces & Pendants</option>
+        <option value="Accessories">Accessories</option>
+        <option value="Men's jewelry">Men's jewelry</option>
+    </select>
+    )
+}
+
+
+
+
+                
+
+           {
+            productData.name=="Jewelry" && (
+                <select name="brand"  value={productData.brand}  onChange={handleChange}>
+                <option value="">Select Product Brand for Jewellery </option>
+                <option value="Messika">Messika</option>
+                <option value="Cartier">Cartier</option>
+                <option value="Garrard">Garrard</option>
+                <option value="David Yurman">David Yurman</option>
+                <option value="John Hardy">John Hardy</option>
+                <option value="Reborto Coin">Reborto Coin</option>
+                <option value="Graff">Graff</option>
+                <option value="Mikimoto">Mikimoto</option>
+                <option value="Tiffani">Tiffani</option>
+            </select>
+
+            )
+           }  
+
+
 
               {productData.name == "Watches" && (
                 <select
@@ -277,22 +339,37 @@ export const AddProduct = () => {
   );
 };
 
-const DIV = styled.div`
-  .useFlex {
-    display: flex;
-  }
+const DIV=styled.div`
+.useFlex{
 
-  .leftBox {
-    padding-top: 60px;
-    padding-left: 100px;
-    width: 800px;
-  }
-  .rightBox {
-    padding-top: 50px;
-    width: 500px;
-  }
-  .formclass {
-    width: 60%;
+    display:flex;
+    
+    width:100%;
+    height:100vh;
+    border: 0px solid red;
+    margin: auto;
+    display: flex;
+    background-color: lightblue;
+    position: relative;
+    background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSh8KUI-WWQ5Novfaw0Yi4IZgTWzFDlWqcDw&usqp=CAU);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.leftBox{
+    padding-top:60px;
+    padding-left:100px;
+    width:800px;
+}
+.rightBox{
+    padding-top:50px;
+    width:800px
+}
+.formclass{
+    width:50%;
+
     margin: 0 auto;
     display: flex;
     margin-top: 30px;

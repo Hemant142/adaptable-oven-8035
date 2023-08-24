@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Styles from "../Components/Navbar.module.css"
 import { NavLink, useLocation } from 'react-router-dom';
 import { MdMenu, MdClose } from 'react-icons/md';
 import logo from "../home-image/logo-white.png"
@@ -129,6 +130,7 @@ const name =useSelector((store:any)=>store.authReducer.ActiveUser.name);
       </ul>
     </nav>
     </DIV>
+
   );
 };
 
