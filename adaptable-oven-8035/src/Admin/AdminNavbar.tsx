@@ -93,7 +93,7 @@ const handleClick = () => {
             <Avatar name="A" size='xs' src='https://bit.ly/dan-abramov' />
            
             <Button display="none" position="absolute" top="100%" right="0" 
-         onClick={handleClick}
+         onClick={handleClick} style={{color:"red"}}
           >
           Logout  
             </Button>
@@ -193,6 +193,7 @@ const DIV = styled.section`
   .navbar__mobile-toggle {
     display: block;
   }
+ 
 }
 
 

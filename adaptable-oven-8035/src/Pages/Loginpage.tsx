@@ -1,7 +1,6 @@
 import React, { useState,useEffect} from 'react'
 import { styled } from 'styled-components'
 import B1 from "../Images/B2.jpg"
-
 import {Link, useLocation, useNavigate} from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import { RootauthState } from '../constrain'
@@ -77,7 +76,7 @@ dispatch({type:LOGIN_SUCCESS,payload:{...isprasent}});
 // alert("Login successfull")
 toast({
    title: 'Login Success',
-   description: ' successfully loged In.',
+   description: ' successfully logged In.',
    status: 'success', 
    duration: 2000,  
    isClosable: true, 

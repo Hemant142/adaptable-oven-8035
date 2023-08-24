@@ -58,33 +58,36 @@ export const Payment = () => {
      border:"1px solid black",
  }}>
     <div className="container">
-      <h1>Payment Details</h1>
+      <h1><i>Payment Details</i></h1>
       
       <div className="payment-options">
         <button
+        id='cash'
           className={paymentOption === 'cash' ? 'active' : ''}
           onClick={() => handlePaymentOptionChange('cash')}
         >
-          Cash on Delivery
+        <i>  Cash on Delivery </i>
         </button>
         <button
+        id='net-banking'
           className={paymentOption === 'netbanking' ? 'active' : ''}
           onClick={() => handlePaymentOptionChange('netbanking')}
         >
-          Net Banking
+         <i> Net Banking</i>
         </button>
         <button
+        id='debit'
           className={paymentOption === 'card' ? 'active' : ''}
           onClick={() => handlePaymentOptionChange('card')}
         >
-          Debit or Credit Card
+         <i> Debit or Credit Card</i>
         </button>
         </div>
       <div className="payment-content">
         {paymentOption === 'cash' && (
           <div>
        <p>Please keep the cash ready for delivery.</p>
-       <button className='first' onClick={handleOpen}> Confirm Payment Option </button>
+       <button className='first' onClick={handleOpen}> <i>Confirm Payment Option </i></button>
        </div>
         )
           
@@ -95,7 +98,9 @@ export const Payment = () => {
         {paymentOption === 'card' && <p>Please enter your card details below.</p>}
         {paymentOption === 'card' && (
           <form>
-            <div className="form-group">
+            <div className="form-group"
+            
+            >
               <label >Card Number</label>
               <input type="text" id="cardNumber" placeholder="#### #### #### ####" />
             </div>
@@ -107,7 +112,7 @@ export const Payment = () => {
               <label >CVV</label>
               <input type="text" id="cvv" placeholder="123" />
             </div>
-            <button  className='first' onClick={handleOpen}> Confirm Payment</button>
+            <button  className='first' onClick={handleOpen}><i> Confirm Payment </i></button>
           </form>
         )}
       </div>
@@ -192,6 +197,31 @@ h1 {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  width:100%
+}
+.form-group :hover{
+-webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 1s ease;
+}
+#debit:hover{
+  -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 1s ease;
+}
+#cash:hover{
+  -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 1s ease;
+}
+#net-banking:hover{
+  -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 1s ease;
 }
 
 label {
@@ -213,6 +243,14 @@ input {
   width: 200px;
   border-radius: 2%;
   margin-top: 20px;
+  
+  font-size:20px;
+}
+.first:hover{
+  -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    transition: 1s ease;
 }
 .popup-container {
   display: flex;
