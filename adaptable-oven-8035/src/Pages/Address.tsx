@@ -116,10 +116,9 @@ export const Address = () => {
       <Navbar />
 
 
-      {
-        ActiveUser.address.length !== 0 && ActiveUser.address[ActiveUser.address.length - 1].house_no
-          ?
-           <h1>hello</h1> :
+      {/* { */}
+        {/* ActiveUser.address.length !== 0 && ActiveUser.address[ActiveUser.address.length - 1].house_no */}
+          {/* ? <h1>hello</h1> : */}
 
           <DIV>
 
@@ -166,7 +165,7 @@ export const Address = () => {
             </div>
           </DIV>
 
-      }
+      {/* } */}
       <Footer />
     </div>
   )
