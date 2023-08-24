@@ -94,7 +94,7 @@ const ProductPage = () => {
       <img src={ProductImg} alt="" style={{width:"100%",height:"400px",objectFit:"fill" }} />
       {
         <div className={Styles.filterSection}>
-          <button onClick={()=>{console.log("heyyy")}}>Filter by Products</button>
+          <button onClick={()=>setToggle(prev=>!prev)}>Filter by Products</button>
  {
       toggle&&name == "Watches" ? <div className={Styles.filterby}>
           <SideBarWatches />
