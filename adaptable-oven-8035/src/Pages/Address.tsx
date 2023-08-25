@@ -120,9 +120,7 @@ export const Address = () => {
       <Navbar />
 
 
-      {/* { */}
-        {/* ActiveUser.address.length !== 0 && ActiveUser.address[ActiveUser.address.length - 1].house_no */}
-          {/* ? <h1>hello</h1> : */}
+
       <DIV>
 
         <div className="background-image" style={{
@@ -149,6 +147,7 @@ export const Address = () => {
 
                   </div>
                 </div>
+
 
                 <div className="address-card-btns">
                   <button className="payment-btn" onClick={() => { navigate("/payment") }}>Continue</button>
