@@ -200,15 +200,15 @@ h1 {
   width:100%
 }
 .form-group :hover{
--webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
+-webkit-transform: scale(1.11);
+    -ms-transform: scale(1.11);
+    transform: scale(1.11);
     transition: 1s ease;
 }
 #debit:hover{
-  -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
+  -webkit-transform: scale(1.11);
+    -ms-transform: scale(1.11);
+    transform: scale(1.11);
     transition: 1s ease;
 }
 #cash:hover{
