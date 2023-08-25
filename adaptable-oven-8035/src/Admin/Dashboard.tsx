@@ -20,6 +20,7 @@ const Dashboard = () => {
       <div>
         <Navbar />
       </div>
+
       <DIV style={{ backgroundColor: "rgb(157, 159, 159)" }}>
         <div>
           <div className="dashboard" style={{ gap: "30px", width: "100%" }}>
@@ -70,13 +71,13 @@ const DIV = styled.div`
   img {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
       rgba(0, 0, 0, 0.22) 0px 10px 10px;
-  }
-
+}
+  
   .dashboard {
     display: flex;
     gap: 10px;
     padding-top: 100px;
-    padding-left: 100px;
+padding-left: 100px;
   }
   .dashboard {
     display: flex;
@@ -126,7 +127,7 @@ const DIV = styled.div`
     transform: rotateZ(-10deg);
     transition: 1s ease;
   }
-  .dashboard2{
+.dashboard2{
     display:flex;
     gap: 20px;
     margin-top:20px;
@@ -137,7 +138,7 @@ const DIV = styled.div`
   }
   .dashboard2 img {
     width: 50%;
-    height:40vh
+height:40vh
   }
   .dashboard2 img:hover {
     -webkit-transform: scale(0.8);
@@ -145,7 +146,7 @@ const DIV = styled.div`
     transform: scale(0.8);
     transition: 1s ease;
   }
-  @media (max-width: 900px) {
+@media (max-width: 900px) {
     .dashboard {
       flex-direction: column;
       align-items: flex-start;
