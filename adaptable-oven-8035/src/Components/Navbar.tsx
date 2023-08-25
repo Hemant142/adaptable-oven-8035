@@ -81,15 +81,12 @@ const Navbar: React.FC = () => {
   }
   return (
     <DIV>
-<<<<<<< HEAD
-      <nav className={colorChange ? "navbar colorChange" : "navbar"}>
-        {/* <div className="navbar__logo">
-=======
+
 
     {/* //  */}
     <nav className={colorChange ? 'navbar colorChange' : 'navbar'}>
       {/* <div className="navbar__logo">
->>>>>>> 7d3fa021e1f98eb3967401566722f42d3c46da6b
+
             <img src={logo} alt="" width="200px" />
 
       </div> */}
