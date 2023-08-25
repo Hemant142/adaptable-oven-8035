@@ -59,6 +59,8 @@ const name =useSelector((store:any)=>store.authReducer.ActiveUser.name);
 
   return (
     <DIV>
+
+    {/* //  */}
     <nav className={colorChange ? 'navbar colorChange' : 'navbar'}>
       {/* <div className="navbar__logo">
             <img src={logo} alt="" width="200px" />
