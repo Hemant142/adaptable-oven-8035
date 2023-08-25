@@ -3,7 +3,7 @@ import { initial } from "lodash";
 import React, { useEffect } from "react";
 import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import { styled } from 'styled-components';
 
@@ -36,7 +36,7 @@ const initalState: InitialState = {
 
 export const Address = () => {
   const [areaData, setareaData] = useState(initalState);
-
+  const [showCard, setShowCard] = useState(true)
   // console.log("Address")
   const userId = useSelector((store: any) => store.authReducer.ActiveUser.id);
   const ActiveUser = useSelector((store: any) => store.authReducer.ActiveUser);
@@ -108,7 +108,11 @@ export const Address = () => {
   }, [])
 
 
-  console.log(ActiveUser.address.length !== 0 && ActiveUser.address[ActiveUser.address.length - 1].house_no, "AUser")
+  // console.log(ActiveUser.address.length !== 0 && ActiveUser.address[ActiveUser.address.length - 1].house_no, "AUser")
+
+  const editUserDataHandler = () => {
+    setShowCard(false)
+  }
 
   return (
 
@@ -119,16 +123,39 @@ export const Address = () => {
       {/* { */}
         {/* ActiveUser.address.length !== 0 && ActiveUser.address[ActiveUser.address.length - 1].house_no */}
           {/* ? <h1>hello</h1> : */}
+      <DIV>
 
-          <DIV>
+        <div className="background-image" style={{
+          backgroundImage: `url("https://thegoldmarket.co.uk/wp-content/uploads/2017/01/jewellery-background.jpg")`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          height: "800px",
+          border: "1px solid black",
+        }}>
 
-            <div className="background-image" style={{
-              backgroundImage: `url("https://thegoldmarket.co.uk/wp-content/uploads/2017/01/jewellery-background.jpg")`,
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
-              height: "800px",
-              border: "1px solid black",
-            }}>
+          {
+            ActiveUser.address.length !== 0 && showCard
+              ?
+              <div className="address-form form-card" >
+                <h2>Want to continue with previous address ?</h2>
+                <div className="address-card-details">
+                  <h3>Full Name - {ActiveUser.address[ActiveUser.address.length - 1].name}</h3>
+                  <p>Mobile - {ActiveUser.address[ActiveUser.address.length - 1].mobile_number}</p>
+                  <p>Pincode - {ActiveUser.address[ActiveUser.address.length - 1].pincod}</p>
+                  <p>Address - {ActiveUser.address[ActiveUser.address.length - 1].house_no}</p>
+                  <p>Area - {ActiveUser.address[ActiveUser.address.length - 1].area}</p>
+                  <p>Town - {ActiveUser.address[ActiveUser.address.length - 1].town}</p>
+                  <div>
+
+                  </div>
+                </div>
+
+                <div className="address-card-btns">
+                  <button className="payment-btn" onClick={() => { navigate("/payment") }}>Continue</button>
+                  <button className="edit-btn" onClick={editUserDataHandler}>Edit</button>
+                </div>
+              </div> :
+
               <div className="address-form">
                 <h2>Shipping Address</h2>
                 <form>
@@ -162,10 +189,14 @@ export const Address = () => {
 
                 </form>
               </div>
-            </div>
-          </DIV>
+          }
 
-      {/* } */}
+
+        </div>
+      </DIV>
+
+
+
       <Footer />
     </div>
   )
@@ -197,7 +228,34 @@ h2 {
   font-size: 20px;
   font-weight:bold
 }
+.form-card {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
+.address-card-details{
+ /* border: 1px solid green; */
+ margin: auto;
+ width: 70%;
+ padding: 10px;
+ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.address-card-details,h3,p{
+  font-weight: 700;
+}
+.address-card-btns{
+  display: flex;
+  width: 70%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.address-card-btns >button{
+  margin: 8px;
+}
 .form-group {
   margin-bottom: 15px;
   width: 470px;

@@ -67,6 +67,7 @@ const Footer = () => {
 export default Footer
 
 const DIV = styled.section`
+/* margin-top: 20px; */
 background-color:#242424;
 padding: 30px 0;
   .footerSec{

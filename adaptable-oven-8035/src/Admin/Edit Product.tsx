@@ -111,8 +111,8 @@ const EditPage = () => {
         {/* <p>{price}</p> */}
         <div style={{ paddingTop: "50px", width: "500px",  }}>
 
-          <FormControl isRequired style={{ paddingLeft: "100px", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px", backgroundColor: "white" }}>
-              <Heading style={{marginLeft:"80px",paddingBottom:"20px",color:"DodgerBlue"}} size='sm'>EDIT PRODUCT FORM <EditIcon/></Heading>
+          <FormControl isRequired style={{ paddingLeft: "100px", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px", backgroundColor: "white" ,marginBottom:"50px"}}>
+              <Heading style={{marginLeft:"80px",paddingBottom:"20px",color:"DodgerBlue",paddingTop:"20px"}} size='sm'>EDIT PRODUCT FORM <EditIcon/></Heading>
             <FormLabel>Image</FormLabel>
             <Input placeholder='Url' width='20.5rem' value={avatar} name='avatar' onChange={(e) => setavatar(e.target.value)} />
             <FormLabel>Name</FormLabel>
@@ -159,7 +159,7 @@ const EditPage = () => {
             <FormLabel>Rating</FormLabel>
             <Input placeholder='rating' width='20.5rem' value={rating} name='rating' onChange={(e: any) => setRating(e.target.value)} />
 
-            <Button  variant='solid' colorScheme='blue' onClick={handleUpdate}   style={{marginLeft:"100px"}}>Save Changes</Button>
+            <Button  variant='solid' colorScheme='blue' onClick={handleUpdate}   style={{marginLeft:"100px",marginTop:"5px",margin:"10px"}}>Save Changes</Button>
           </FormControl>
 
         </div>
