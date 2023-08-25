@@ -63,6 +63,7 @@ export const SideBarJewelry = () => {
     }
     setBrand(newBrand);
   };
+  
   const handleSearch=(e:any):void=>{
     setSearch(e.target.value)
   }

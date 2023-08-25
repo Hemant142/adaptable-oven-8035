@@ -63,7 +63,10 @@ console.log(isPrasent,"ISPresent")
 
   
   <NavDiv>
-    <Navbar2/>
+    {/* <Navbar2/>
+     */}
+     <Navbar/>
+     <img src={"https://static.vecteezy.com/system/resources/thumbnails/006/660/777/small/3d-rendering-many-size-diamonds-on-a-black-surface-with-reflection-free-photo.jpg"} alt="" style={{width:"100%",height:"220px",objectFit:"fill" }} />
   </NavDiv>
 
     <Div>

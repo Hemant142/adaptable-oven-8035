@@ -1,0 +1,332 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+  
+  body {
+    font-family: "Whitney", -apple-system, "BlinkMacSystemFont", "Segoe UI",
+      "Roboto", Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    background-color: rgb(250, 251, 253);
+  }
+  
+  /* ---------------Navbar section CSS-------------------*/
+  #logo{
+    width: 280px;
+    height: 80px;
+    padding-left: 70px;
+   padding-top: 15px;
+  }
+  .header{
+    /* border: 2px solid red; */
+    width: 100%;
+  }
+  /* .header {
+    background: #fff;
+    z-index: 10;
+    border-bottom: 2px solid black;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  } */
+  /* .header a {
+    text-decoration: none;
+    color: black;
+  } */
+  /* .header a img {
+    width: 65px;
+    height: 60px;
+  } */
+  .header ul {
+    list-style: none;
+  }
+  .uppernav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 150%;
+   padding-right: 100px;
+   
+  }
+  .navimage{
+    height: 550px;
+    width: 600px
+
+  }
+
+  .react-icons{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 35px;
+    width: 22%;
+  }
+ 
+  .menu-items {
+    display: flex;
+    align-items: center;
+    /* padding-left: 60px; */
+    justify-content: space-between;
+    /* border: 2px solid blue; */
+    width: 100%;
+
+   
+  }
+  .menu-items li {
+    font-size: 16px;
+    font-weight:normal;
+    /* padding: 8px 16px; */
+    /* border: 2px solid red; */
+    transition: background 0.3s ease-in-out;
+  }
+  .menu-items .menu-item-1:hover {
+    border-bottom: 3px solid #0c0c0c;
+   
+    padding-bottom: 16px;
+  }
+  .menu-items .menu-item-2:hover {
+    border-bottom: 3px solid #f9a92c;
+    padding-bottom: 16px;
+  }
+  
+  
+   .col_1{
+    /* border:  2px solid red; */
+    height: 120%;
+    width: 500px;
+    /* background-color: #a8a9ad; */
+   }
+  
+  .mega-menu {
+    position: absolute;
+    /* margin-top: 50px; */
+    left:-10px;
+    margin-left: 10px;
+    width: 100%;
+    /* height: 100%; */
+    /* border: 2px solid green; */
+    /* top: 80px; */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  .mega-menu .content {
+    background: #fff;
+    position: relative;
+
+    box-shadow: 1px 1px 25px -4px rgba(181, 181, 181, 0.54);
+    /* border: 2px solid red; */
+    height: 100%;
+    width: 100%;
+    top: 30px;
+    margin: 0 auto;
+    padding: 1rem 2rem 1rem 2rem;
+    display: flex;
+    /* width: 80vw; */
+    justify-content: space-between;
+  }
+  .mega-menu .content4 {
+    background: #fff;
+    position: relative;
+    box-shadow: 1px 1px 25px -4px rgba(207, 28, 28, 0.54);
+    top: 30px;
+    margin: 0 auto;
+    padding: 1rem 2rem 1rem 2rem;
+    display: flex;
+    width: 80vw;
+    justify-content: space-between;
+    /* border: 2px solid red; */
+  }
+
+  .content .col,
+  .content4 .col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* border: 2px solid red; */
+    /* width: 50%; */
+   
+    line-height: 1.3rem;
+  }
+  .content .col .item-1-heading {
+    color:#000000;
+    font-size: 1rem;
+    line-height: 3rem;
+    font-weight: bold;
+    /* border: 2px solid red; */
+    margin-top: 20px;
+  }
+  .content .col .item-2-heading {
+    color: #fb56c1;
+    font-size: 0.8rem;
+    border: 2px solid red;
+    line-height: 3rem;
+    font-weight: bold;
+  }
+  .content .col .item-3-heading {
+    color: #f26a10;
+    font-size: 0.8rem;
+    line-height: 3rem;
+    font-weight: bold;
+  }
+  .content4 .col .item-4-heading {
+    color: #20201f;
+    font-size: 0.8rem;
+    line-height: 3rem;
+    font-weight: bold;
+  }
+  .content4 .col .item-5-heading {
+    color: #0db7af;
+    font-size: 0.8rem;
+    line-height: 3rem;
+    font-weight: bold;
+  }
+  .content .col p {
+    line-height: 1.2rem;
+    /* border: 2px solid red; */
+  }
+  .col .mega-links li,
+  .col .mega-links li a {
+    padding: 0rem;
+    /* border: 2px solid red; */
+    margin-top: 20px;
+    color: rgb(71, 71, 71);
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .menu-items li:hover .mega-menu {
+    top: 50px;
+    opacity: 1;
+    visibility: visible;
+  }
+  .col .mega-links :hover {
+    color: #000000;
+    font-size: 16px;
+    font-weight: normal
+  }
+
+
+  .menu-item-6 .sup-part {
+    color: red;
+    position: relative;
+    font-size: 9px;
+    font-weight: 900;
+    bottom: 8px;
+  }
+  
+  .image-1 {
+    display: block;
+    width: 103px;
+    height: 30px;
+    margin: 10px auto 0;
+  }
+  .image-2 {
+    display: block;
+    width: 514px;
+    height: 274px;
+    margin: 20px auto 0;
+  }
+
+  .explore{
+    margin: auto;
+    text-align: center;
+  }
+
+  .exp{
+    background-color: white;
+    border: 1px solid grey;
+    margin-top: 20px;
+    padding: 10px 40px;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color : rgb(39, 39, 39);
+  }
+  .exp i{
+    margin-left: 10px;
+  }
+
+  .mega-menu .content-6 {
+    background: #fff;
+    box-shadow: 1px 1px 25px -4px rgba(207, 28, 28, 0.54);
+    position: relative;
+    top: 30px;
+    margin: 0 auto;
+    padding: 1rem;
+    width: fit-content;
+  }
+
+  .content-6 section p {
+    margin-top: 9.5px;
+    font-family: "Whitney";
+    font-size: 16px;
+    font-weight: 300;
+    text-align: center;
+    color: #535766;
+  }
+
+ /*--------- ----------search----------------- */
+
+  .search-div{
+    height: 35px;
+    padding: 5px 20px;
+    
+  }
+  input::placeholder {
+    font-weight: semibold;
+    font-size:medium;
+    opacity: 1;
+}
+input:focus{
+  border:1px solid black;
+  background-color: white;
+}
+#nav-2{
+  display: flex;
+  justify-content: space-between;
+ }
+  .search-div i {
+   
+    margin: 15px;
+    /* opacity: 0.6; */
+  }
+   input {
+    width: 40%;
+   background-color: rgb(240, 235, 235);
+    outline: none;
+    font-size: 12px;
+    margin-top:27px;
+  }
+  .react-icons p{
+    margin-right: 15px;
+  }
+
+  
+  .nav-last {
+    padding: 0 12px 0 17px;
+    margin-right: 15px;
+    position: relative;
+    display: flex;
+    height: 40px;
+  }
+  .nav-last > div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    align-items: center;
+    padding-top: 5px;
+    margin-left: 15px;
+  }
+  
+ 
+
+
