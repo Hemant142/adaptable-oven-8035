@@ -89,31 +89,14 @@ const ProductPage = () => {
     <div>
       <Navbar />
 
-      
-
       <img src={ProductImg} alt="" style={{width:"100%",height:"400px",objectFit:"fill" }} />
-      {
-        <div className={Styles.filterSection}>
-          <button onClick={()=>setToggle(prev=>!prev)}>Filter by Products</button>
- {
-      toggle&&name == "Watches" ? <div className={Styles.filterby}>
-          <SideBarWatches />
-        </div> : toggle&&<div className={Styles.filterby}>
-          <SideBarJewelry />
-        </div>}
-
-        </div>
-       }
-      <div className={Styles.productsection}>
-       
-        {name == "Watches" ? <div className={Styles.sidebar}>
-
-          <SideBarWatches />
-        </div> : <div className={Styles.sidebar}>
-          <SideBarJewelry />
-        </div>}
-
-
+      
+       <div className={Styles.productsection}>
+ {name == "Watches" ? 
+ <div className={Styles.sidebar}><SideBarWatches /></div>
+ : <div className={Styles.sidebar}><SideBarJewelry /></div>}
+      
+ 
         <div className={Styles.productlist}>
           {isError && <h1>Error Occurs</h1>}
           {isLoading && <h1>Loading...</h1>}
@@ -124,13 +107,12 @@ const ProductPage = () => {
         </div>
 
 
-      </div>
-
+        </div>
       <Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} />
       <div>
         <Footer />
       </div>
-
+     
     </div>
   )
 }
