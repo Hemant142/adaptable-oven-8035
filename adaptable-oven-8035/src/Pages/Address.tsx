@@ -18,7 +18,7 @@ import { LOGIN_SUCCESS } from "../Redux/AuthReducer/actionType";
 interface InitialState {
   name: string;
   mobile_number: string;
-  pincode: string;
+  pincod: string;
   house_no: string;
   area: string;
   town: string;
@@ -27,7 +27,7 @@ interface InitialState {
 const initialState: InitialState = {
   name: "",
   mobile_number: "",
-  pincode: "",
+  pincod: "",
   house_no: "",
   area: "",
   town: "",
@@ -120,7 +120,6 @@ export const Address = () => {
       <Navbar />
 
 
-
       <DIV>
 
         <div className="background-image" style={{
@@ -139,7 +138,7 @@ export const Address = () => {
                 <div className="address-card-details">
                   <h3>Full Name - {ActiveUser.address[ActiveUser.address.length - 1].name}</h3>
                   <p>Mobile - {ActiveUser.address[ActiveUser.address.length - 1].mobile_number}</p>
-                  <p>Pincode - {ActiveUser.address[ActiveUser.address.length - 1].pincode}</p>
+                  <p>Pincode - {ActiveUser.address[ActiveUser.address.length - 1].pincod}</p>
                   <p>Address - {ActiveUser.address[ActiveUser.address.length - 1].house_no}</p>
                   <p>Area - {ActiveUser.address[ActiveUser.address.length - 1].area}</p>
                   <p>Town - {ActiveUser.address[ActiveUser.address.length - 1].town}</p>
@@ -147,7 +146,6 @@ export const Address = () => {
 
                   </div>
                 </div>
-
 
                 <div className="address-card-btns">
                   <button className="payment-btn" onClick={() => { navigate("/payment") }}>Continue</button>
@@ -170,7 +168,7 @@ export const Address = () => {
                   </div>
                   <div className="form-group">
                     <label htmlFor="city">Pincode</label>
-                    <input type="text" id="city" required name="pincod" value={areaData.pincode} onChange={handleChange} />
+                    <input type="text" id="city" required name="pincod" value={areaData.pincod} onChange={handleChange} />
                   </div>
                   <div className="form-group">
                     <label htmlFor="zip">Flat, House no., Building, Company, Apartment</label>
@@ -195,7 +193,6 @@ export const Address = () => {
       </DIV>
 
 
-
       <Footer />
     </div>
   )
@@ -211,17 +208,18 @@ const DIV = styled.div`
 
 .address-form {
   padding: 20px;
-  padding-right: 20px;
+  /* padding-left: 20px; */
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   width: 500px;
- border: 2px solid red;
- /* height: 50%; */
+  
   margin: auto;
   margin-top: 100px;
-  margin-bottom: 10px;
+  margin-bottom: 100px;
 }
+
+
 
 h2 {
   text-align: center;
@@ -237,7 +235,6 @@ h2 {
 }
 
 .address-card-details{
- /* border: 1px solid green; */
  margin: auto;
  width: 70%;
  padding: 10px;
@@ -256,9 +253,9 @@ h2 {
 
 .address-card-btns >button{
   margin: 8px;
-}
+} 
 .form-group {
-  /* margin-bottom: 15px; */
+  margin-bottom:15px;
   width: 470px;
 }
 
@@ -287,13 +284,11 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 10px;
   transition: background-color 0.2s ease;
 }
 
 button:hover {
   background-color: #444;
 }
-
-
-
 `
