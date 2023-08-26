@@ -216,9 +216,11 @@ const DIV = styled.div`
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   width: 500px;
- 
+ border: 2px solid red;
+ /* height: 50%; */
   margin: auto;
   margin-top: 100px;
+  margin-bottom: 10px;
 }
 
 h2 {
@@ -256,7 +258,7 @@ h2 {
   margin: 8px;
 }
 .form-group {
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
   width: 470px;
 }
 

@@ -87,7 +87,7 @@ export default function YourOrder() {
                         <div style={{marginLeft:"10px", marginTop:"10px", display:"flex" , justifyContent:"space-between"}}>
                         <div>
                             <p>Order Placed:</p> 
-                            <p>12/12/12</p>
+                            {/* <p>12/12/12</p> */}
                           </div>
                           <div>
                             <p>Total</p> 
