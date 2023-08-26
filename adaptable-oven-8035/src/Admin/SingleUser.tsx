@@ -91,7 +91,7 @@ export const SingleUser = () => {
                     </p>
                     <p>
                       <b>Pincode :</b>
-                      {address[address.length - 1].pincod}
+                      {address[address.length - 1].pincode}
                     </p>
                     <p>
                       <b>House No :</b>
