@@ -24,7 +24,7 @@ interface InitialState {
   town: string;
 }
 
-const initalState: InitialState = {
+const initialState: InitialState = {
   name: "",
   mobile_number: "",
   pincod: "",
@@ -35,7 +35,7 @@ const initalState: InitialState = {
 
 
 export const Address = () => {
-  const [areaData, setareaData] = useState(initalState);
+  const [areaData, setareaData] = useState(initialState);
   const [showCard, setShowCard] = useState(true)
   // console.log("Address")
   const userId = useSelector((store: any) => store.authReducer.ActiveUser.id);
@@ -90,7 +90,7 @@ export const Address = () => {
       console.error("Failed to add address to address", error);
     }
     // dispatch(postProduct(productData)) 
-    setareaData(initalState)
+    setareaData(initialState)
   }
   // console.log(areaData,"Area")
   // console.log(ActiveUser, "userId")
