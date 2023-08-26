@@ -24,7 +24,8 @@ import { Navigate, Link } from "react-router-dom";
 import { GrPrevious, GrNext } from "react-icons/gr";
 import axios from "axios";
 import { log } from "console";
-
+import { EditIcon } from "@chakra-ui/icons";
+import { DeleteIcon } from "@chakra-ui/icons";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -113,12 +114,21 @@ const App: React.FC = () => {
             xl: "repeat(4, 1fr)",
           }}
           gap="20px"
-          paddingTop="50px"
-          marginRight="12x0px"
+          // paddingTop="50px"
+          // marginRight="12x0px"
+          // paddingLeft="50px"
+          padding="60px"
         >
           {data.map((item: any) => (
             <div key={item.id}>
-              <Card maxW="sm" maxHeight={"550px"}>
+              <Card
+                maxW="xs"
+                maxHeight={"550px"}
+                width={{ base: "100%", md: "auto" }}
+                margin={{ base: "0 auto", md: "0" }}
+                padding={{ base: "20px", md: "0" }}
+                boxShadow=" rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
+              >
                 <CardBody>
                   <Image
                     style={{ width: "300px", height: "200px" }}
@@ -159,9 +169,13 @@ const App: React.FC = () => {
                 </CardBody>
                 <Divider />
                 <CardFooter>
-                  <ButtonGroup spacing="2">
+                  <ButtonGroup spacing="20">
                     <Link to={`/a/Edit/${item.id}`}>
-                      <Button variant="solid" colorScheme="blue">
+                      <Button
+                        variant="solid"
+                        colorScheme="blue"
+                        leftIcon={<EditIcon />}
+                      >
                         Edit
                       </Button>
                     </Link>
@@ -169,6 +183,7 @@ const App: React.FC = () => {
                     <Button
                       variant="solid"
                       colorScheme="red"
+                      leftIcon={<DeleteIcon />}
                       onClick={() => handleDelete(item.id)}
                     >
                       Delete
@@ -185,4 +200,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-
