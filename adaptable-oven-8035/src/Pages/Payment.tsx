@@ -29,7 +29,7 @@ export const Payment = () => {
     .put(`https://monkeyapi-2-0.onrender.com/users/${userId}`, updatedOrder)
     .then((response) => {
       console.log('Data updated successfully:', response.data);
-      dispatch({type:LOGIN_SUCCESS,payload:response.data});
+      dispatch({type:LOGIN_SUCCESS, payload:response.data});
       
     })
     .catch((error) => {
@@ -40,7 +40,6 @@ export const Payment = () => {
   const handleClose = () => {
     setIsOpen(false);
     navigte("/")
-
   };
 
   const handlePaymentOptionChange = (option: string) => {
@@ -97,6 +96,7 @@ export const Payment = () => {
         {paymentOption === 'netbanking' && <p>Please select your bank for net banking.</p>}
         {paymentOption === 'card' && <p>Please enter your card details below.</p>}
         {paymentOption === 'card' && (
+          <>
           <form>
             <div className="form-group"
             
@@ -112,8 +112,10 @@ export const Payment = () => {
               <label >CVV</label>
               <input type="text" id="cvv" placeholder="123" />
             </div>
-            <button  className='first' onClick={handleOpen}><i> Confirm Payment </i></button>
+      
           </form>
+           <button  className='first' onClick={handleOpen} ><i> Confirm Payment </i></button>
+           </>
         )}
       </div>
     </div>

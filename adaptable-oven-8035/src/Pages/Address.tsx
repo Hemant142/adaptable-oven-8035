@@ -208,15 +208,20 @@ const DIV = styled.div`
 
 .address-form {
   padding: 20px;
-  padding-right: 20px;
+  /* padding-left: 20px; */
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   width: 500px;
- 
+
+  
   margin: auto;
   margin-top: 100px;
+  margin-bottom: 100px;
+
 }
+
+
 
 h2 {
   text-align: center;
@@ -232,7 +237,6 @@ h2 {
 }
 
 .address-card-details{
- /* border: 1px solid green; */
  margin: auto;
  width: 70%;
  padding: 10px;
@@ -251,9 +255,11 @@ h2 {
 
 .address-card-btns >button{
   margin: 8px;
-}
+} 
 .form-group {
-  margin-bottom: 15px;
+
+  margin-bottom:15px;
+
   width: 470px;
 }
 
@@ -282,13 +288,11 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 10px;
   transition: background-color 0.2s ease;
 }
 
 button:hover {
   background-color: #444;
 }
-
-
-
 `
