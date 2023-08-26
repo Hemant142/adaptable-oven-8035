@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes,Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Homepage from '../Pages/Homepage'
 import Loginpage from '../Pages/Loginpage'
 import Signup from '../Pages/Signup'
@@ -32,80 +32,80 @@ import YourOrder from '../Pages/YourOrder'
 const AllRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Homepage/>}/>
-      <Route path="/login" element={<Loginpage/>}/>
-      <Route path="/signup" element={<Signup/>}/>
-      <Route path="/product/:name" element={<ProductPage/>}/>
-      <Route path='/contact' element={<ContactUs/>}/>
+      <Route path="/" element={<Homepage />} />
+      <Route path="/login" element={<Loginpage />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/product/:name" element={<ProductPage />} />
+      <Route path='/contact' element={<ContactUs />} />
       <Route path="/product/:name/:id" element={
-      <PrivateRoutes>
- <SingleProductPage/>
-      </PrivateRoutes>
-     
-      }/>
+        <PrivateRoutes>
+          <SingleProductPage />
+        </PrivateRoutes>
+
+      } />
       <Route path="/cart" element={
-       <PrivateRoutes>
-      <AddToCard/>
-      </PrivateRoutes>
-      }/>
+        <PrivateRoutes>
+          <AddToCard />
+        </PrivateRoutes>
+      } />
       <Route path="/a/dashboard" element={
-       <PrivateRoutes>
-      <Dashboard/>
-      </PrivateRoutes>
-      }/>
+        <PrivateRoutes>
+          <Dashboard />
+        </PrivateRoutes>
+      } />
       <Route path="/a/AllProduct" element={
-      <PrivateRoutes>
-      <AllProduct/>
-      </PrivateRoutes>
-      }/>
+        <PrivateRoutes>
+          <AllProduct />
+        </PrivateRoutes>
+      } />
       <Route path="/a/Edit/:id" element={
-      <PrivateRoutes>
-      <EditPage/>
-      </PrivateRoutes>
-      }/>
+        <PrivateRoutes>
+          <EditPage />
+        </PrivateRoutes>
+      } />
       <Route path="/a/users" element={
-      <PrivateRoutes>
-      <UserDetails/>
-      </PrivateRoutes>
-      }/>
+        <PrivateRoutes>
+          <UserDetails />
+        </PrivateRoutes>
+      } />
       <Route path="/a/add-product" element={
-      <PrivateRoutes>
-      <AddProduct/>
-      </PrivateRoutes>
-      }/>
-    
+        <PrivateRoutes>
+          <AddProduct />
+        </PrivateRoutes>
+      } />
+
       <Route path="/a/setting" element={
-      <PrivateRoutes>
-      <Setting/>
-      </PrivateRoutes>
-      }/>
+        <PrivateRoutes>
+          <Setting />
+        </PrivateRoutes>
+      } />
 
       <Route path="/payment" element={
-      <PrivateRoutes>
- <Payment/>
-      </PrivateRoutes>
-     
-      
-      }/>
-      <Route path="/address" element={
-      <PrivateRoutes>
-      <Address/>
-      </PrivateRoutes>
-      }/>
+        <PrivateRoutes>
+          <Payment />
+        </PrivateRoutes>
 
-      
-      <Route path="/about" element={<About/>}/>
+
+      } />
+      <Route path="/address" element={
+        <PrivateRoutes>
+          <Address />
+        </PrivateRoutes>
+      } />
+
+
+      <Route path="/about" element={<About />} />
 
 
       <Route path="/a/users/details/:id" element={
-      <PrivateRoutes>
-      <SingleUser/>
-      </PrivateRoutes>
-      }/>
-      <Route path="/gift" element={<Gift/>}/>
-      <Route path='/your_order' element={<YourOrder/>}/>
+        <PrivateRoutes>
+          <SingleUser />
+        </PrivateRoutes>
+      } />
+      <Route path="/gift" element={<Gift />} />
+      <Route path='/your_order' element={<YourOrder />} />
 
-      <Route path="*" element={<h1>Page not found</h1>}/>
+      <Route path="*" element={<h1>Page not found</h1>} />
     </Routes>
   )
 }
