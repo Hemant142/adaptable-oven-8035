@@ -37,7 +37,7 @@ export const SingleUser = () => {
 
   //  console.log(typeof(add),"assdd");
   const handleDelete = () => {
-    
+
   };
 
   return (
@@ -79,7 +79,7 @@ export const SingleUser = () => {
                   Address Details
                 </Heading>
 
-                {address && address.length >0 ? (
+                {address && address.length > 0 ? (
                   <div>
                     <p>
                       <b>Name :</b>
@@ -91,7 +91,7 @@ export const SingleUser = () => {
                     </p>
                     <p>
                       <b>Pincode :</b>
-                      {address[address.length - 1].pincode}
+                      {address[address.length - 1].pincod}
                     </p>
                     <p>
                       <b>House No :</b>
@@ -118,9 +118,9 @@ export const SingleUser = () => {
           <br />
 
           <HStack spacing="24px">
-{/* <=============================================== Product of Cart=================================================>           */}
+            {/* <=============================================== Product of Cart=================================================>           */}
             <Card
-              width={"50%"}
+              width={"40%"}
               style={{
                 backgroundColor: "#f0f7f8",
                 border: "1px solid #cccccc7a",
@@ -176,8 +176,8 @@ export const SingleUser = () => {
                 </div>
               </CardBody>
             </Card>
-{/* <==============================================OrderDetails===============================================> */}
-            <Card width={"50%"} style={{ backgroundColor: "#d2f8d7" }}>
+            {/* <==============================================OrderDetails===============================================> */}
+            <Card width={"68%"} style={{ backgroundColor: "#d2f8d7" }}>
               <CardBody>
                 <Heading as="h4" size="md">
                   Order Details
@@ -223,7 +223,34 @@ export const SingleUser = () => {
                         <div>
                           <Button
                             colorScheme="red"
-                            marginTop={"20px"}
+                            marginTop={"5px"}
+                            onClick={handleDelete}
+                          >
+                            Order Placed{" "}
+                          </Button>
+                        </div>
+                        <div>
+                          <Button
+                            colorScheme="red"
+                            marginTop={"5px"}
+                            onClick={handleDelete}
+                          >
+                            Order Dispatched{" "}
+                          </Button>
+                        </div>
+                        <div>
+                          <Button
+                            colorScheme="red"
+                            marginTop={"5px"}
+                            onClick={handleDelete}
+                          >
+                            Out for Delivery{" "}
+                          </Button>
+                        </div>
+                        <div>
+                          <Button
+                            colorScheme="red"
+                            marginTop={"5px"}
                             onClick={handleDelete}
                           >
                             Order Delivered{" "}
