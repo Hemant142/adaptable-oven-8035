@@ -4,6 +4,7 @@ const CartDetail = () => {
   return (
     <div>
       cartdetails
+      
     </div>
   )
 }
