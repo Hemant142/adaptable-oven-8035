@@ -15,6 +15,7 @@ import Navbar from '../Components/Navbar';
 import ProductImg from '../product-image/ProductImg.png'
 import Footer from '../Components/Footer';
 import Pagination from '../Components/Pegination';
+import Panel from "../Components/Panel";
 const ProductPage = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
@@ -108,7 +109,25 @@ const ProductPage = () => {
 
 
         </div>
+
       <Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} />
+      {/* ==========================   Sort && filter   ========================================= */}
+     
+     
+      <div className={Styles.panel} style={{
+        display:toggle?"block":"none",
+      }} >
+         {/* import panel component */}
+         <Panel/> 
+         {/* displays at 1184 */}
+     </div>
+     
+<div className={Styles.orderby}>
+ <button onClick={()=>setToggle(prev=>!prev)}>Sort By</button>
+ <button onClick={()=>setToggle(prev=>!prev)}>Filter</button>
+</div>
+
+   {/* ========================== */} 
       <div>
         <Footer />
       </div>

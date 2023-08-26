@@ -25,7 +25,42 @@ margin-top: 30px;
   margin-bottom: 60px; 
 
 }
+/* ====================================================== */
+.orderby{
+  /* border:1px solid black; */
+  display:flex;
+  justify-content: space-between;
+  margin-top:8px;
+}
 
+.orderby>button{
+   width:50%;
+   height:50px;
+    border:1px solid grey;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.orderby button{
+  display: block;
+  font-size: 20px;
+}
+.orderby>div:hover{
+  background-color: rgb(106, 100, 100);
+  color:white;
+}
+.panel{
+  width:90%;
+  height:60%;
+  border:1px solid grey;
+  background-Color:grey;
+  position:absolute;
+  border-radius: 20px;
+  bottom:22%;
+  left:50%;
+transform:translateX(-50%);
+}
+/* =================================================== */
 @media screen and (min-device-width: 320px) and (max-device-width: 639px) { 
   .ProductBanner{
     width:100%;
@@ -53,6 +88,7 @@ margin-top: 30px;
     padding-bottom: 15px;
     /* background-color: aqua; */
     }
+   
   }
   
   @media screen and (min-device-width: 640px) and (max-device-width: 799px) { 
@@ -141,6 +177,7 @@ margin-top: 30px;
     padding-bottom: 15px; 
     /* background-color: aqua; */
     }
+
     }
 
     @media screen and (min-width:1201px) {
@@ -163,4 +200,5 @@ margin-top: 30px;
       margin-bottom: 60px; 
       /* background-color: aqua; */
       }
+     
     }
