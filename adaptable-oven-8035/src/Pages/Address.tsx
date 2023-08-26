@@ -213,10 +213,12 @@ const DIV = styled.div`
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   width: 500px;
+
   
   margin: auto;
   margin-top: 100px;
   margin-bottom: 100px;
+
 }
 
 
@@ -255,7 +257,9 @@ h2 {
   margin: 8px;
 } 
 .form-group {
+
   margin-bottom:15px;
+
   width: 470px;
 }
 
