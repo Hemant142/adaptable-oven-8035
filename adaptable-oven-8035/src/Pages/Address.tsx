@@ -18,7 +18,7 @@ import { LOGIN_SUCCESS } from "../Redux/AuthReducer/actionType";
 interface InitialState {
   name: string;
   mobile_number: string;
-  pincod: string;
+  pincode: string;
   house_no: string;
   area: string;
   town: string;
@@ -27,7 +27,7 @@ interface InitialState {
 const initialState: InitialState = {
   name: "",
   mobile_number: "",
-  pincod: "",
+  pincode: "",
   house_no: "",
   area: "",
   town: "",
@@ -138,7 +138,7 @@ export const Address = () => {
                 <div className="address-card-details">
                   <h3>Full Name - {ActiveUser.address[ActiveUser.address.length - 1].name}</h3>
                   <p>Mobile - {ActiveUser.address[ActiveUser.address.length - 1].mobile_number}</p>
-                  <p>Pincode - {ActiveUser.address[ActiveUser.address.length - 1].pincod}</p>
+                  <p>Pincode - {ActiveUser.address[ActiveUser.address.length - 1].pincode}</p>
                   <p>Address - {ActiveUser.address[ActiveUser.address.length - 1].house_no}</p>
                   <p>Area - {ActiveUser.address[ActiveUser.address.length - 1].area}</p>
                   <p>Town - {ActiveUser.address[ActiveUser.address.length - 1].town}</p>
@@ -168,7 +168,7 @@ export const Address = () => {
                   </div>
                   <div className="form-group">
                     <label htmlFor="city">Pincode</label>
-                    <input type="text" id="city" required name="pincod" value={areaData.pincod} onChange={handleChange} />
+                    <input type="text" id="city" required name="pincod" value={areaData.pincode} onChange={handleChange} />
                   </div>
                   <div className="form-group">
                     <label htmlFor="zip">Flat, House no., Building, Company, Apartment</label>
