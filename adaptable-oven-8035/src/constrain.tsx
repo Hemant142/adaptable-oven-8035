@@ -11,6 +11,11 @@ export type ProductObject = {
    avatar:string;
    info?:string;
 }
+export type Options= {
+   year: string,
+   month: string,
+   day: string,
+}
 
 export type UserObject ={
 name:string;

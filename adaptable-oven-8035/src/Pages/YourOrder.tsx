@@ -19,15 +19,16 @@ import { Avatar, Button, Spinner } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { SingleUserFetch } from "../Redux/AdminReducer/action";
 export default function YourOrder() {
-  const { id } = useParams();
+  // const { id } = useParams();
 
   const single = useSelector((state: any) => state.data.singleUser);
   const isload = useSelector((state: any) => state.data.singleuserLoad);
+  const id=useSelector((store: any) => store.authReducer.ActiveUser.id);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(SingleUserFetch(id));
+    dispatch(SingleUserFetch(id));
   }, []);
 
   let { name, email, password, addToCart, orderPlaced, address } = single;
@@ -46,7 +47,7 @@ export default function YourOrder() {
       <Navbar/>
       <img src={'https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?cs=srgb&dl=pexels-dima-valkov-3266700.jpg&fm=jpg'} alt="" style={{width:"100%",height:"400px",objectFit:"fill" }} />
     
-      {/* {isload ? (
+      {isload ? (
         <Spinner
           thickness="4px"
           speed="0.65s"
@@ -54,7 +55,7 @@ export default function YourOrder() {
           color="blue.500"
           size="xl"
         />
-      ) : ( */}
+      ) : (
         <Container maxW={"100%"} style={{ margin: "0 auto" }}>
          
 
@@ -153,7 +154,7 @@ export default function YourOrder() {
             </Card>
           </HStack>
         </Container>
-      
+      )}
     </div>
   )
 }

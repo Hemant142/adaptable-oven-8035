@@ -297,13 +297,14 @@ input:focus{
     margin: 15px;
     /* opacity: 0.6; */
   }
-   input {
+   /* input {
     width: 40%;
    background-color: rgb(240, 235, 235);
     outline: none;
     font-size: 12px;
     margin-top:27px;
-  }
+    margin-top: 10px;
+  } */
   .react-icons p{
     margin-right: 15px;
   }
