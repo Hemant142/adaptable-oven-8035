@@ -43,6 +43,8 @@ const Navbar: React.FC = () => {
   const dispatch: any = useDispatch();
   const isAuth = useSelector((store: any) => store.authReducer.isAuth);
   const name = useSelector((store: any) => store.authReducer.ActiveUser.name);
+ 
+  // console.log(id,"id h bay")
   const navigate=useNavigate()
   // console.log("nav",isAuth)
 
