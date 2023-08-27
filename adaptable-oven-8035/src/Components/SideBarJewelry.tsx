@@ -1,10 +1,20 @@
 // import { Search2Icon } from "@chakra-ui/icons";
-import { Checkbox, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { Checkbox, Input, InputGroup, InputLeftElement, useDisclosure } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { string } from "yargs";
-
+import "./Sidebar.css"
+import {
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  Button
+} from '@chakra-ui/react'
 export const SideBarJewelry = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialBrand = searchParams.getAll("brand");
@@ -18,6 +28,9 @@ export const SideBarJewelry = () => {
   const [search,setSearch]=useState("")
   const{name}:any=useParams()
  console.log(name,"NAme")
+ const { isOpen, onOpen, onClose } = useDisclosure()
+ const btnRef = React.useRef()
+ 
 
 // console.log(order,"Category")
   useEffect(() => {
@@ -80,6 +93,8 @@ export const SideBarJewelry = () => {
   };
 
   return (
+    <>
+    <div className="Laptop_Sidebar">
     <SidebarContainer>
 
 
@@ -279,11 +294,251 @@ export const SideBarJewelry = () => {
 
       <Button onClick={handleReset}>Reset</Button>
     </SidebarContainer>
+    </div>
+    
+
+{/* <===========================================When Screen is smalll ==============================> */}
+<div className="Mobile_Sidebar">
+
+      <Button colorScheme='teal' onClick={onOpen}>
+        Filter
+      </Button>
+    
+      <Drawer
+        isOpen={isOpen}
+        placement='left'
+        onClose={onClose}
+        // finalFocusRef={btnRef}
+        // finalFocusRef={btnRef}
+        
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>Filter</DrawerHeader>
+
+          <DrawerBody>
+
+            <SidebarContainer>
+
+
+<input
+  style={{width:"90%",height:"35px",marginTop:"0",marginLeft:"5px",backgroundColor:"lightgray",padding:"3px 3px"}}
+  type="text"
+  placeholder="Search"
+  value={search}
+  onChange={handleSearch}
+/>
+
+
+<Section>
+  <h3>Filter by Category</h3>
+  <CheckboxGroup>
+  <CheckboxLabel>
+      <input
+        type="checkbox"
+        value={"Rings"}
+        onChange={handleCategory}
+        checked={category.includes("Rings")}
+      />
+      Rings
+    </CheckboxLabel>
+
+    <CheckboxLabel>
+      <input
+        type="checkbox"
+        value={"Brecelets"}
+        onChange={handleCategory}
+        checked={category.includes("Brecelets")}
+      />
+      Bracelets
+    </CheckboxLabel>
+
+    <CheckboxLabel>
+      <input
+        type="checkbox"
+        value={"Earrning"}
+        onChange={handleCategory}
+        checked={category.includes("Earrning")}
+      />
+      Earrning
+    </CheckboxLabel>
+
+    <CheckboxLabel>
+      <input
+        type="checkbox"
+        value={"Necklaces & Pendants"}
+        onChange={handleCategory}
+        checked={category.includes("Necklaces & Pendants")}
+      />
+      Necklaces
+    </CheckboxLabel>
+
+    <CheckboxLabel>
+      <input
+        type="checkbox"
+        value={"Accessories"}
+        onChange={handleCategory}
+        checked={category.includes("Accessories")}
+      />
+      Accessories
+    </CheckboxLabel>
+    <CheckboxLabel>
+      <input
+        type="checkbox"
+        value={"Men's jewelry"}
+        onChange={handleCategory}
+        checked={category.includes("Men's jewelry")}
+      />
+      Men's Jewelry
+    </CheckboxLabel>
+  </CheckboxGroup>
+</Section>
+
+<Section>
+  <h3>Filter By Brands</h3>
+  <CheckboxGroup>
+    <CheckboxLabel>
+      <input
+        type="checkbox"
+        value={"Messika"}
+        onChange={handleBrand}
+        checked={brand.includes("Messika")}
+      />
+      Messika
+    </CheckboxLabel>
+
+    <CheckboxLabel>
+      <input
+        type="checkbox"
+        value={"Cartier"}
+        onChange={handleBrand}
+        checked={brand.includes("Cartier")}
+      />
+      Cartier
+    </CheckboxLabel>
+
+    <CheckboxLabel>
+      <input
+        type="checkbox"
+        value={"Garrard"}
+        onChange={handleBrand}
+        checked={brand.includes("Garrard")}
+      />
+      Garrard
+    </CheckboxLabel>
+
+    <CheckboxLabel>
+      <input
+        type="checkbox"
+        value={"David Yurman"}
+        onChange={handleBrand}
+        
+        checked={brand.includes("David Yurman")}
+      />
+      David Yurman
+    </CheckboxLabel>
+
+    <CheckboxLabel>
+      <input
+        type="checkbox"
+        value={"John Hardy"}
+        onChange={handleBrand}
+        checked={brand.includes("John Hardy")}
+      />
+      Johan Hardy
+    </CheckboxLabel>
+
+    <CheckboxLabel>
+      <input
+        type="checkbox"
+        value={"Reborto Coin"}
+        onChange={handleBrand}
+        checked={brand.includes("Reborto Coin")}
+      />
+      Roberto Coin
+    </CheckboxLabel>
+
+    <CheckboxLabel>
+      <input
+        type="checkbox"
+        value={"Graff"}
+        onChange={handleBrand}
+        checked={brand.includes("Graff")}
+      />
+      Graff
+    </CheckboxLabel>
+
+    <CheckboxLabel>
+      <input
+        type="checkbox"
+        value={"Mikimoto"}
+        onChange={handleBrand}
+        checked={brand.includes("Mikimoto")}
+      />
+      Mikimoto
+    </CheckboxLabel>
+
+    <CheckboxLabel>
+      <input
+        type="checkbox"
+        value={"Tiffani"}
+        onChange={handleBrand}
+        checked={brand.includes("Tiffani")}
+        // color="green"
+      />
+      Tiffani
+    </CheckboxLabel>
+  </CheckboxGroup>
+</Section>
+
+<Section>
+  <h3>Sort By Discount</h3>
+  <RadioGroup onChange={handleOrder}>
+    <div className="radio">
+    <RadioLabel>
+      <input   type="radio"
+      name="sort"
+      value={"asc"}
+      checked={order === "asc"}/>
+       <h3>Ascending</h3>
+    </RadioLabel>
+   
+  
+    </div>
+      <RadioLabel>
+      <input style={{display:"block"}} type="radio"
+      name="sort"
+      value={"desc"}
+      checked={order === "desc"} />
+       <h3>Descending</h3>
+       </RadioLabel>
+  </RadioGroup>
+</Section>
+
+{/* <Button onClick={handleReset}>Reset</Button> */}
+            </SidebarContainer>
+
+          </DrawerBody>
+
+          <DrawerFooter>
+            <Button variant='outline' mr={3} onClick={onClose}>
+              Cancel
+            </Button>
+            <Button onClick={handleReset}>Reset</Button>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    
+    </div>
+
+    </>
   );
 };
 
 const SidebarContainer = styled.div`
   background-color: white;
+  /* border: 2px solid red; */
 `;
 
 const Section = styled.div`
@@ -309,8 +564,6 @@ const CheckboxLabel = styled.label`
    /* border: 1px solid red; */
 `;
 
-
-
 const RadioGroup = styled.div`
 width:90%;
 `;
@@ -332,21 +585,21 @@ margin:auto;
 `;
 
 
-const Button = styled.button`
-  background-color:black;
-  color: white;
-  border: none;
-  padding: 5px;
-  width: 170px;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius:5px;
-  margin-top:10px;
-  margin-left:5px;
+// const Button = styled.button`
+//   background-color:black;
+//   color: white;
+//   border: none;
+//   padding: 5px;
+//   width: 170px;
+//   font-weight: bold;
+//   cursor: pointer;
+//   border-radius:5px;
+//   margin-top:10px;
+//   margin-left:5px;
 
-  &:hover {
-    background-color:white;
-    color:black;
-    border: 2px solid grey;
-  }
-`;
+//   &:hover {
+//     background-color:white;
+//     color:black;
+//     border: 2px solid grey;
+//   }
+// `;

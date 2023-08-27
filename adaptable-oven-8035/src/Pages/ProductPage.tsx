@@ -94,8 +94,8 @@ const ProductPage = () => {
       
        <div className={Styles.productsection}>
  {name == "Watches" ? 
- <div className={Styles.sidebar}><SideBarWatches /></div>
- : <div className={Styles.sidebar}><SideBarJewelry /></div>}
+ <div ><SideBarWatches /></div>
+ : <div ><SideBarJewelry /></div>}
       
  
         <div className={Styles.productlist}>
@@ -113,19 +113,6 @@ const ProductPage = () => {
       <Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} />
       {/* ==========================   Sort && filter   ========================================= */}
      
-     
-      <div className={Styles.panel} style={{
-        display:toggle?"block":"none",
-      }} >
-         {/* import panel component */}
-         <Panel /> 
-         {/* displays at 1184 */}
-     </div>
-     
-<div className={Styles.orderby}>
- <button onClick={()=>setToggle(prev=>!prev)}>Sort By</button>
- <button onClick={()=>setToggle(prev=>!prev)}>Filter</button>
-</div>
  
    {/* ========================== */} 
       <div>
