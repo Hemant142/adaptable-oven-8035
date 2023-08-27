@@ -103,7 +103,7 @@ const AllRoutes = () => {
         </PrivateRoutes>
       } />
       <Route path="/gift" element={<Gift />} />
-      <Route path='/your_order' element={<YourOrder />} />
+      <Route path='/your_order' element={<PrivateRoutes><YourOrder /></PrivateRoutes>} />
 
       <Route path="*" element={<h1>Page not found</h1>} />
     </Routes>
