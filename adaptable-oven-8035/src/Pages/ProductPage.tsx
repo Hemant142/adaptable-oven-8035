@@ -15,6 +15,7 @@ import Navbar from '../Components/Navbar';
 import ProductImg from '../product-image/ProductImg.png'
 import Footer from '../Components/Footer';
 import Pagination from '../Components/Pegination';
+import Panel from "../Components/Panel";
 const ProductPage = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
@@ -60,7 +61,7 @@ const ProductPage = () => {
   }
 
   let store = useSelector((store: any) => store.productReducer)
-  console.log(store, "data")
+  console.log(store, "data from products")
   let { products, isError, isLoading, totalPages } = useSelector((store: any) => {
     return {
       products: store.productReducer.products,
@@ -89,31 +90,14 @@ const ProductPage = () => {
     <div>
       <Navbar />
 
-      
-
       <img src={ProductImg} alt="" style={{width:"100%",height:"400px",objectFit:"fill" }} />
-      {
-        <div className={Styles.filterSection}>
-          <button onClick={()=>setToggle(prev=>!prev)}>Filter by Products</button>
- {
-      toggle&&name == "Watches" ? <div className={Styles.filterby}>
-          <SideBarWatches />
-        </div> : toggle&&<div className={Styles.filterby}>
-          <SideBarJewelry />
-        </div>}
-
-        </div>
-       }
-      <div className={Styles.productsection}>
-       
-        {name == "Watches" ? <div className={Styles.sidebar}>
-
-          <SideBarWatches />
-        </div> : <div className={Styles.sidebar}>
-          <SideBarJewelry />
-        </div>}
-
-
+      
+       <div className={Styles.productsection}>
+ {name == "Watches" ? 
+ <div className={Styles.sidebar}><SideBarWatches /></div>
+ : <div className={Styles.sidebar}><SideBarJewelry /></div>}
+      
+ 
         <div className={Styles.productlist}>
           {isError && <h1>Error Occurs</h1>}
           {isLoading && <h1>Loading...</h1>}
@@ -124,13 +108,30 @@ const ProductPage = () => {
         </div>
 
 
-      </div>
+        </div>
 
       <Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} />
+      {/* ==========================   Sort && filter   ========================================= */}
+     
+     
+      <div className={Styles.panel} style={{
+        display:toggle?"block":"none",
+      }} >
+         {/* import panel component */}
+         <Panel /> 
+         {/* displays at 1184 */}
+     </div>
+     
+<div className={Styles.orderby}>
+ <button onClick={()=>setToggle(prev=>!prev)}>Sort By</button>
+ <button onClick={()=>setToggle(prev=>!prev)}>Filter</button>
+</div>
+ 
+   {/* ========================== */} 
       <div>
         <Footer />
       </div>
-
+     
     </div>
   )
 }
