@@ -28,21 +28,15 @@ margin-top: 30px;
 /* ====================================================== */
 .orderby{
   /* border:1px solid black; */
-  display:flex;
-  justify-content: space-between;
-  margin-top:8px;
+ 
 }
 
-.orderby>button{
+.orderby button{
    width:50%;
    height:50px;
     border:1px solid grey;
-    display:flex;
-    justify-content: center;
-    align-items: center;
 }
 .orderby button{
-  display: block;
   font-size: 20px;
 }
 .orderby>div:hover{
@@ -88,7 +82,9 @@ transform:translateX(-50%);
     padding-bottom: 15px;
     /* background-color: aqua; */
     }
-   
+    .orderby{
+      display:block;
+    }
   }
   
   @media screen and (min-device-width: 640px) and (max-device-width: 799px) { 
@@ -122,6 +118,10 @@ transform:translateX(-50%);
     padding-bottom: 15px;
     /* background-color: aqua; */
     }
+
+    .orderby{
+      display:block;
+    }
   }
 
 @media screen and (min-width:800px) and (max-width:1185px) {
@@ -150,6 +150,9 @@ transform:translateX(-50%);
     margin:auto;
     padding-bottom: 15px;
     /* background-color: aqua; */
+    }
+    .orderby{
+      display:block;
     }
 }
   
@@ -200,5 +203,7 @@ transform:translateX(-50%);
       margin-bottom: 60px; 
       /* background-color: aqua; */
       }
-     
+      .orderby{
+        display:none;
+      }
     }

@@ -61,7 +61,7 @@ const ProductPage = () => {
   }
 
   let store = useSelector((store: any) => store.productReducer)
-  console.log(store, "data")
+  console.log(store, "data from products")
   let { products, isError, isLoading, totalPages } = useSelector((store: any) => {
     return {
       products: store.productReducer.products,
@@ -118,7 +118,7 @@ const ProductPage = () => {
         display:toggle?"block":"none",
       }} >
          {/* import panel component */}
-         <Panel/> 
+         <Panel /> 
          {/* displays at 1184 */}
      </div>
      
@@ -126,7 +126,7 @@ const ProductPage = () => {
  <button onClick={()=>setToggle(prev=>!prev)}>Sort By</button>
  <button onClick={()=>setToggle(prev=>!prev)}>Filter</button>
 </div>
-
+ 
    {/* ========================== */} 
       <div>
         <Footer />
