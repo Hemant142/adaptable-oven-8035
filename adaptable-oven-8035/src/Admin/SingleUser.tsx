@@ -220,7 +220,7 @@ export const SingleUser = () => {
                             </p>
                           )}
                         </div>
-                        <div>
+                        {/* <div>
                           <Button
                             colorScheme="red"
                             marginTop={"5px"}
@@ -228,34 +228,9 @@ export const SingleUser = () => {
                           >
                             Order Placed{" "}
                           </Button>
-                        </div>
-                        <div>
-                          <Button
-                            colorScheme="red"
-                            marginTop={"5px"}
-                            onClick={handleDelete}
-                          >
-                            Order Dispatched{" "}
-                          </Button>
-                        </div>
-                        <div>
-                          <Button
-                            colorScheme="red"
-                            marginTop={"5px"}
-                            onClick={handleDelete}
-                          >
-                            Out for Delivery{" "}
-                          </Button>
-                        </div>
-                        <div>
-                          <Button
-                            colorScheme="red"
-                            marginTop={"5px"}
-                            onClick={handleDelete}
-                          >
-                            Order Delivered{" "}
-                          </Button>
-                        </div>
+                        </div> */}
+
+
                       </div>
                     ))
                   ) : (
