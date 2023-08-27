@@ -6,6 +6,8 @@ import ProductImg from "../product-image/ProductImg.png";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { UserObjectNew } from "../constrain";
+import Styles from "../Pages/YourOrder.module.css"
+
 import {
   Container,
   HStack,
@@ -47,7 +49,7 @@ export default function YourOrder() {
   }, []);
 
   let { name, email, password, addToCart, orderPlaced, address } = single;
-  console.log(address[address.length - 1].house_no, "address");
+  console.log(address,"address from ur order");
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const handleHover = () => {
@@ -139,11 +141,11 @@ export default function YourOrder() {
                                 className="name_address"
                                 onMouseEnter={handleHover}
                                 // onMouseLeave={handleClose}
-                                title={
-                                  isHovered
-                                    ? `${address.house_no}/${address.area} ${address.town}`
-                                    : ""
-                                }
+                                // title={
+                                //   isHovered
+                                //     ? `${address.house_no}/${address.area} ${address.town}`
+                                //     : ""
+                                // }
                               >
                                 {name} <ChevronDownIcon />
                               </button>
@@ -154,11 +156,11 @@ export default function YourOrder() {
                                   <ModalCloseButton />
                                   <ModalBody>
                                     {/* <Lorem count={2} /> */}
-                                    {`${address[address.length - 1].house_no}/${
+                                    {address&&address.length>0?`${address[address.length - 1].house_no}/${
                                       address[address.length - 1].area
                                     } ${address[address.length - 1].town},${
                                       address[address.length - 1].pincod
-                                    }, India `}
+                                    }, India `:"Address is not Added"}
                                   </ModalBody>
                                 </ModalContent>
                               </Modal>
@@ -173,22 +175,25 @@ export default function YourOrder() {
                         {/* <================================================Lower MAin DIV=========================================>                        */}
                         <div
                           key={el.id}
-                          style={{
-                            display: "flex",
-                            gap: "10px",
-                            backgroundColor: "#ffffff",
+                          className={Styles.mainSub}
+                          // style={{
+                            // display: "flex",
+                            // gap: "10px",
+                            // backgroundColor: "#ffffff",
+                            // backgroundColor:"red"
                             // justifyContent:"space-evenly"
-                          }}
+                          // }}
+
                         >
-                          <div style={{ border: "2px solid red" }}>
-                            <img src={el.avatar} alt="" width={"150px"} />
+                          <div style={{height:"250px"}}> 
+                          {/* //subdiv1 */}
+                            <img className={Styles.orderimg} src={el.avatar} alt=""  />
                           </div>
-                          <hr />
-                          <div
+                          {/* <hr /> */}
+                          {/* ========= single card starts here ===== */}
+                          {/* <div
                             style={{
-                              border: "2px solid blue",
-                              width: "30%",
-                              padding: "20px",
+                            
                             }}
                           >
                             <b>{el.name}</b>
@@ -207,7 +212,17 @@ export default function YourOrder() {
                               </p>
                             )}
                            
-                          </div>
+                          </div> */}
+                          <table className={Styles.table}>
+                            <tr>
+                              <td>Product type </td><td>:{el.name}</td>
+                            </tr>
+                            <tr><td>Price</td><td>:{el.price}</td></tr>
+                            <tr><td>Category</td><td>:{el.category}</td></tr>
+                            <tr><td>About</td><td>:{el.about}</td></tr>
+                            <tr><td>Address</td><td>:{el.info||"No Address added"}</td></tr>
+                          </table>
+                          {/* ==========================      single order ends here === */}
                         </div>
                         {/* <=======================================================Lower MAin DIV ENds here=========================> */}
                       </div>

@@ -408,6 +408,7 @@ const DIV = styled.section`
 
   .mobile-menu-open {
   display: block;
+  /* border: 2px solid red; */
 }
 
 .Login{
@@ -477,6 +478,7 @@ const DIV = styled.section`
     .mobileNav {
       width: 100%;
       display: flex;
+      /* border: 2px solid red; */
     }
     .colorChange a {
       color: #ddd9d9 !important;

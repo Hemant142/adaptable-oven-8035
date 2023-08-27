@@ -1,8 +1,18 @@
-import { Checkbox, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Checkbox, Input, InputGroup, InputLeftElement, useDisclosure } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
-
+import "./Sidebar.css";
+import {
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  Button
+} from '@chakra-ui/react'
 export default function SideBarWatches() {
     const [searchParams, setSearchParams] = useSearchParams();
     const initialBrand = searchParams.getAll("brand");
@@ -12,6 +22,10 @@ export default function SideBarWatches() {
     const [brand, setBrand] = useState(initialBrand|| []);
     const [order, setOrder] = useState(initalOrder || "");
     const [search,setSearch]=useState("")
+    const{name}=useParams()
+    console.log(name,"NAme")
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const btnRef = React.useRef()
   // console.log(order,"Category")
   console.log(search)
     useEffect(() => {
@@ -51,7 +65,8 @@ export default function SideBarWatches() {
       setOrder("");
       
     };
-  return (
+  return (<>
+   <div className="Laptop_Sidebar">
     <SidebarContainer>
 
 <input
@@ -178,6 +193,174 @@ export default function SideBarWatches() {
     
           <Button onClick={handleReset}>Reset</Button>
         </SidebarContainer>
+        </div>
+
+
+        {/* <===========================================When Screen is smalll ==============================> */}
+<div className="Mobile_Sidebar">
+
+<Button colorScheme='teal' onClick={onOpen}>
+ Filter
+</Button>
+
+<Drawer
+  isOpen={isOpen}
+  placement='left'
+  onClose={onClose}
+  // finalFocusRef={btnRef}
+  // finalFocusRef={btnRef}
+  
+>
+  <DrawerOverlay />
+  <DrawerContent>
+    <DrawerCloseButton />
+    <DrawerHeader>Filter</DrawerHeader>
+
+    <DrawerBody>
+
+    <SidebarContainer>
+
+<input
+        style={{width:"90%",height:"35px",marginTop:"0",marginLeft:"5px",backgroundColor:"lightgray",padding:"3px 3px"}}
+        type="text"
+        placeholder="Search"
+        value={search}
+        onChange={handleSearch}
+      />
+          <Section>
+            <h3>Filter By Brands</h3>
+            <CheckboxGroup>
+              <CheckboxLabel>
+                <input
+                  type="checkbox"
+                  value={"Rolex"}
+                  onChange={handleBrand}
+                  checked={brand.includes("Rolex")}
+                />
+                Rolex
+              </CheckboxLabel>
+    
+              <CheckboxLabel>
+                <input
+                  type="checkbox"
+                  value={"OMEGA"}
+                  onChange={handleBrand}
+                  checked={brand.includes("OMEGA")}
+                />
+                Omega
+              </CheckboxLabel>
+    
+              <CheckboxLabel>
+                <input
+                  type="checkbox"
+                  value={"MEISTERSINGER"}
+                  onChange={handleBrand}
+                  checked={brand.includes("MEISTERSINGER")}
+                />
+                Meistersinger
+              </CheckboxLabel>
+    
+              <CheckboxLabel>
+                <input
+                  type="checkbox"
+                  value={"LOUIS MOINET"}
+                  onChange={handleBrand}
+                  checked={brand.includes("LOUIS MOINET")}
+                />
+                Louis Moinet
+              </CheckboxLabel>
+    
+              <CheckboxLabel>
+                <input
+                  type="checkbox"
+                  value={"GRAND SEIKO"}
+                  onChange={handleBrand}
+                  checked={brand.includes("GRAND SEIKO")}
+                />
+                Grand Seiko
+              </CheckboxLabel>
+    
+              <CheckboxLabel>
+                <input
+                  type="checkbox"
+                  value={"FREDERIQUE CONSTANT"}
+                  onChange={handleBrand}
+                  checked={brand.includes("FREDERIQUE CONSTANT")}
+                />
+                Frederique Constant
+              </CheckboxLabel>
+    
+              <CheckboxLabel>
+                <input
+                  type="checkbox"
+                  value={"BOVET"}
+                  onChange={handleBrand}
+                  checked={brand.includes("BOVET")}
+                />
+                Bovet
+              </CheckboxLabel>
+    
+              <CheckboxLabel>
+                <input
+                  type="checkbox"
+                  value={"ALPINA"}
+                  onChange={handleBrand}
+                  checked={brand.includes("ALPINA")}
+                />
+                Alpina
+              </CheckboxLabel>
+    
+            </CheckboxGroup>
+          </Section>
+    
+          <Section>
+            <h3>Sort By Discount</h3>
+            <RadioGroup onChange={handleOrder}>
+              <div className="radio">
+              <RadioButton>
+              <RadioLabel>
+                <input  type="radio"
+                name="sort"
+                value={"asc"}
+                checked={order === "asc"}/>
+                <h3>Ascending</h3></RadioLabel>
+              </RadioButton>
+              
+              </div>
+    
+              <div className="radio">
+                <RadioButton>
+                <RadioLabel>
+                <input type="radio"
+                name="sort"
+                value={"desc"}
+                checked={order === "desc"} />
+                <h3>Descending</h3></RadioLabel>
+                </RadioButton>
+              
+              </div>
+            </RadioGroup>
+          </Section>
+    
+          <Button onClick={handleReset}>Reset</Button>
+        </SidebarContainer>
+
+    </DrawerBody>
+
+    <DrawerFooter>
+      <Button variant='outline' mr={3} onClick={onClose}>
+        Cancel
+      </Button>
+      <Button onClick={handleReset}>Reset</Button>
+    </DrawerFooter>
+  </DrawerContent>
+</Drawer>
+
+</div>
+
+
+        
+        </>
       );
     };
     
@@ -300,21 +483,21 @@ margin:auto;
 `;
 
 
-const Button = styled.button`
-  background-color:black;
-  color: white;
-  border: none;
-  padding: 5px;
-  width: 170px;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius:5px;
-  margin-top:10px;
-  margin-left:5px;
+// const Button = styled.button`
+//   background-color:black;
+//   color: white;
+//   border: none;
+//   padding: 5px;
+//   width: 170px;
+//   font-weight: bold;
+//   cursor: pointer;
+//   border-radius:5px;
+//   margin-top:10px;
+//   margin-left:5px;
 
-  &:hover {
-    background-color:white;
-    color:black;
-    border: 2px solid grey;
-  }
-`;
+//   &:hover {
+//     background-color:white;
+//     color:black;
+//     border: 2px solid grey;
+//   }
+// `;

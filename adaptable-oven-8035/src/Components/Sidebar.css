@@ -1,0 +1,25 @@
+.Laptop_Sidebar{
+    display: block;
+    width: 100%;
+    /* border: 2px solid blue; */
+    /* margin-top: 30px;
+  margin-bottom: 60px;
+  width: 15%;
+  margin-left: 10px;
+  width:15%; */
+
+}
+.Mobile_Sidebar{
+ display: none;
+ /* border: 2px solid red; */
+
+}
+  @media screen and (max-width: 786px) {
+   .Laptop_Sidebar{
+       display: none
+   }
+   .Mobile_Sidebar{
+    display: block;
+    /* margin-top: 400px; */
+   }
+  }
