@@ -1,6 +1,6 @@
-import React from 'react'
-import Navbar from '../Components/Navbar'
-import ProductImg from '../product-image/ProductImg.png'
+import React, { useState } from "react";
+import Navbar from "../Components/Navbar";
+import ProductImg from "../product-image/ProductImg.png";
 // import React from "react";
 // import Navbar from "./AdminNavbar";
 import { useParams } from "react-router";
@@ -15,38 +15,60 @@ import {
   WrapItem,
 } from "@chakra-ui/layout";
 import { Card, CardBody } from "@chakra-ui/card";
-import { Avatar, Button, Spinner } from "@chakra-ui/react";
+import {
+  Avatar,
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  Spinner,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { useEffect } from "react";
 import { SingleUserFetch } from "../Redux/AdminReducer/action";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 export default function YourOrder() {
   // const { id } = useParams();
 
   const single = useSelector((state: any) => state.data.singleUser);
   const isload = useSelector((state: any) => state.data.singleuserLoad);
-  const id=useSelector((store: any) => store.authReducer.ActiveUser.id);
+  const id = useSelector((store: any) => store.authReducer.ActiveUser.id);
+  // const name = useSelector((store: any) => store.authReducer.ActiveUser.name);
 
   const dispatch = useDispatch();
+
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     dispatch(SingleUserFetch(id));
   }, []);
 
   let { name, email, password, addToCart, orderPlaced, address } = single;
-  console.log(orderPlaced, "address");
-  // let add;
-  //  if(address){
-  //   add=address
-  //  }
+  console.log(address[address.length - 1].house_no, "address");
 
-  //  console.log(typeof(add),"assdd");
-  const handleDelete = () => {
-    
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const handleHover = () => {
+    onOpen();
   };
+
+  const handleClose = () => {
+    onClose();
+  };
+
   return (
     <div>
-      <Navbar/>
-      <img src={'https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?cs=srgb&dl=pexels-dima-valkov-3266700.jpg&fm=jpg'} alt="" style={{width:"100%",height:"400px",objectFit:"fill" }} />
-    
+      <Navbar />
+      <img
+        src={
+          "https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?cs=srgb&dl=pexels-dima-valkov-3266700.jpg&fm=jpg"
+        }
+        alt=""
+        style={{ width: "100%", height: "400px", objectFit: "fill" }}
+      />
+
       {isload ? (
         <Spinner
           thickness="4px"
@@ -57,12 +79,12 @@ export default function YourOrder() {
         />
       ) : (
         <Container maxW={"100%"} style={{ margin: "0 auto" }}>
-         
-
           <HStack spacing="24px">
-
-{/* <==============================================OrderDetails===============================================> */}
-            <Card width={"50%"} style={{ backgroundColor: "#d2f8d7", width:"100%" }}>
+            {/* <==============================================OrderDetails===============================================> */}
+            <Card
+              width={"50%"}
+              style={{ backgroundColor: "#d2f8d7", width: "100%" }}
+            >
               <CardBody>
                 <Heading as="h4" size="md">
                   {/* Order Details */}
@@ -73,77 +95,121 @@ export default function YourOrder() {
                     display: "flex",
                     flexDirection: "column",
                     gap: "10px",
-                   
                   }}
                 >
                   {orderPlaced && orderPlaced.length > 0 ? (
                     orderPlaced.map((el: any) => (
-                      <div  style={{
-                        // display: "flex",
-                        // gap: "10px",
-                        backgroundColor: "#b2b6b7",
-                        // justifyContent:"space-evenly"
-                        borderRadius:"15px"
-                      }}>
-                        <div style={{marginLeft:"10px", marginTop:"10px", display:"flex" , justifyContent:"space-between"}}>
-                        <div>
-                            <p>Order Placed:</p> 
-                            {/* <p>12/12/12</p> */}
-                          </div>
-                          <div>
-                            <p>Total</p> 
-                            <p>₹{el.price}</p>
-                          </div>
-                          <div>
-                            <p>Order Placed:</p> 
-                            {/* <p>12/12/12</p> */}
-                          </div>
-                        </div>
-                        <br />
                       <div
-                        key={el.id}
                         style={{
-                          display: "flex",
-                          gap: "10px",
-                          backgroundColor: "#ffffff",
+                          // display: "flex",
+                          // gap: "10px",
+                          backgroundColor: "#b2b6b7",
                           // justifyContent:"space-evenly"
-                        
+                          borderRadius: "15px",
                         }}
                       >
-                        <div style={{border:"2px solid red"}}>
-                          <img src={el.avatar} alt="" width={"150px"} />
-                        </div>
-                        <hr />
-                        <div style={{border:"2px solid blue", width:"30%", padding:"20px"}}>
-                          <b>{el.name}</b>
-                          <p>
-                            <b>Price:</b> {el.price}
-                          </p>
-                          <p>
-                            <b>Category:</b> {el.category}
-                          </p>
-                          <p>
-                            <b>About:</b> {el.about}
-                          </p>
-                          {el.info && (
-                            <p>
-                              <b>Info:</b> {el.info}
-                            </p>
-                          )}
-                          <p>
-                            <b>Date:</b>
-                          </p>
-                        </div>
-                        {/* <div style={{border:"2px solid green", marginLeft:"40%"}}>
-                          <Button
-                            colorScheme="red"
-                            marginTop={"20px"}
-                            onClick={handleDelete}
+                        {/* <============================================Top Bar of Order Placed, Total && SHIP================>*/}
+                        <div
+                          style={{
+                            marginLeft: "10px",
+                            marginTop: "10px",
+                            display: "flex",
+                          }}
+                        >
+                          <div
+                            style={{ marginLeft: "10px", marginRight: "10px" }}
                           >
-                            Order Delivered{" "}
-                          </Button>
-                        </div> */}
-                      </div>
+                            <p>ORDER PLACED</p>
+                            {el.orderDate}
+                          </div>
+                          <div
+                            style={{ marginLeft: "10px", marginRight: "10px" }}
+                          >
+                            <p>TOTAL</p>
+                            <p>₹{el.price}</p>
+                          </div>
+
+                          {/* <==========================================SHIP========================================================>                           */}
+                          <div
+                            style={{ marginLeft: "10px", marginRight: "10px" }}
+                          >
+                            <p>SHIP TO </p>
+                            <p>
+                              <button
+                                className="name_address"
+                                onMouseEnter={handleHover}
+                                // onMouseLeave={handleClose}
+                                title={
+                                  isHovered
+                                    ? `${address.house_no}/${address.area} ${address.town}`
+                                    : ""
+                                }
+                              >
+                                {name} <ChevronDownIcon />
+                              </button>
+                              <Modal isOpen={isOpen} onClose={onClose}>
+                                <ModalOverlay />
+                                <ModalContent>
+                                  <ModalHeader>{name}</ModalHeader>
+                                  <ModalCloseButton />
+                                  <ModalBody>
+                                    {/* <Lorem count={2} /> */}
+                                    {`${address[address.length - 1].house_no}/${
+                                      address[address.length - 1].area
+                                    } ${address[address.length - 1].town},${
+                                      address[address.length - 1].pincod
+                                    }, India `}
+                                  </ModalBody>
+                                </ModalContent>
+                              </Modal>
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* <============================================END=====================================================>*/}
+
+                        <br />
+
+                        {/* <================================================Lower MAin DIV=========================================>                        */}
+                        <div
+                          key={el.id}
+                          style={{
+                            display: "flex",
+                            gap: "10px",
+                            backgroundColor: "#ffffff",
+                            // justifyContent:"space-evenly"
+                          }}
+                        >
+                          <div style={{ border: "2px solid red" }}>
+                            <img src={el.avatar} alt="" width={"150px"} />
+                          </div>
+                          <hr />
+                          <div
+                            style={{
+                              border: "2px solid blue",
+                              width: "30%",
+                              padding: "20px",
+                            }}
+                          >
+                            <b>{el.name}</b>
+                            <p>
+                              <b>Price:</b> {el.price}
+                            </p>
+                            <p>
+                              <b>Category:</b> {el.category}
+                            </p>
+                            <p>
+                              <b>About:</b> {el.about}
+                            </p>
+                            {el.info && (
+                              <p>
+                                <b>Info:</b> {el.info}
+                              </p>
+                            )}
+                           
+                          </div>
+                        </div>
+                        {/* <=======================================================Lower MAin DIV ENds here=========================> */}
                       </div>
                     ))
                   ) : (
@@ -156,5 +222,5 @@ export default function YourOrder() {
         </Container>
       )}
     </div>
-  )
+  );
 }

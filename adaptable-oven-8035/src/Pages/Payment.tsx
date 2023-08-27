@@ -18,10 +18,47 @@ export const Payment = () => {
   const cartItem =useSelector((store:any)=>store.authReducer.ActiveUser.addToCart);
   const navigte=useNavigate()
   // console.log(ActiveUser,"payment")
+  // const handleOpen = () => {
+  //   setIsOpen(true);
+  //   const updatedOrder={...ActiveUser,
+  //     orderPlaced: [...ActiveUser.addToCart, ...ActiveUser.orderPlaced],
+  //     addToCart:[],
+  //     // address:[...ActiveUser.address]
+  //   }
+  //   axios
+  //   .put(`https://monkeyapi-2-0.onrender.com/users/${userId}`, updatedOrder)
+  //   .then((response) => {
+  //     console.log('Data updated successfully:', response.data);
+  //     dispatch({type:LOGIN_SUCCESS, payload:response.data});
+      
+  //   })
+  //   .catch((error) => {
+  //     console.error('Error updating data:', error);
+  //   });
+  // };
+//  interface
+  function formatDate(date: Date): any {
+    const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', year: 'numeric' };
+    
+    return new Intl.DateTimeFormat('en-IN', options).format(date);
+  }
+  
+  
+
+  
+  const currentDate = new Date();
+  const formattedDate = formatDate(currentDate);
+  
+  console.log(formattedDate,"Date");
+  // console.log(ActiveUser,"payment")
   const handleOpen = () => {
     setIsOpen(true);
     const updatedOrder={...ActiveUser,
-      orderPlaced: [...ActiveUser.addToCart, ...ActiveUser.orderPlaced],
+      orderPlaced: [...ActiveUser.addToCart.map((item:any) => ({
+        orderDate: formattedDate,
+        ...item
+     
+      })), ...ActiveUser.orderPlaced,],
       addToCart:[],
       // address:[...ActiveUser.address]
     }
@@ -29,7 +66,7 @@ export const Payment = () => {
     .put(`https://monkeyapi-2-0.onrender.com/users/${userId}`, updatedOrder)
     .then((response) => {
       console.log('Data updated successfully:', response.data);
-      dispatch({type:LOGIN_SUCCESS, payload:response.data});
+      dispatch({type:LOGIN_SUCCESS,payload:response.data});
       
     })
     .catch((error) => {
@@ -37,6 +74,7 @@ export const Payment = () => {
     });
   };
 
+  
   const handleClose = () => {
     setIsOpen(false);
     navigte("/")
