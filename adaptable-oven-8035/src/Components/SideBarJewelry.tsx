@@ -99,7 +99,7 @@ export const SideBarJewelry = () => {
 
 
       <input
-        style={{width:"90%",height:"35px",marginTop:"0",marginLeft:"5px",backgroundColor:"lightgray",padding:"3px 3px"}}
+        style={{width:"100%",height:"35px",marginTop:"0",marginBottom:"10px",backgroundColor:"lightgray",padding:"3px 3px"}}
         type="text"
         placeholder="Search"
         value={search}
@@ -292,7 +292,7 @@ export const SideBarJewelry = () => {
         </RadioGroup>
       </Section>
 
-      <Button onClick={handleReset}>Reset</Button>
+      <Button onClick={handleReset} w={"100%"} backgroundColor={"black"} color={"white"} >Reset</Button>
     </SidebarContainer>
     </div>
     
@@ -300,7 +300,7 @@ export const SideBarJewelry = () => {
 {/* <===========================================When Screen is smalll ==============================> */}
 <div className="Mobile_Sidebar">
 
-      <Button colorScheme='teal' onClick={onOpen}>
+      <Button backgroundColor={"black"} color={"white"} onClick={onOpen}>
         Filter
       </Button>
     
@@ -539,10 +539,15 @@ export const SideBarJewelry = () => {
 const SidebarContainer = styled.div`
   background-color: white;
   /* border: 2px solid red; */
+  
+  input{
+    margin-right: 3%
+  }
 `;
 
 const Section = styled.div`
   margin-bottom: 10px;
+  padding-left: 10px;
   h3{
     font-weight:bold;
     margin-bottom:5px
@@ -561,6 +566,8 @@ const CheckboxGroup = styled.div`
 
 const CheckboxLabel = styled.label`
    width:90%;
+   /* padding-left: 5px; */
+   margin-left: 5px;
    /* border: 1px solid red; */
 `;
 
