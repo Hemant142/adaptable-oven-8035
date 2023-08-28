@@ -191,7 +191,7 @@ export default function SideBarWatches() {
             </RadioGroup>
           </Section>
     
-          <Button onClick={handleReset}>Reset</Button>
+          <Button onClick={handleReset} w={"100%"} backgroundColor={"black"} color={"white"}>Reset</Button>
         </SidebarContainer>
         </div>
 
@@ -342,7 +342,7 @@ export default function SideBarWatches() {
             </RadioGroup>
           </Section>
     
-          <Button onClick={handleReset}>Reset</Button>
+          {/* <Button onClick={handleReset} >Reset</Button> */}
         </SidebarContainer>
 
     </DrawerBody>
@@ -438,10 +438,14 @@ export default function SideBarWatches() {
 
 const SidebarContainer = styled.div`
   background-color: white;
+  input{
+    margin-right: 3%
+  }
 `;
 
 const Section = styled.div`
   margin-bottom: 10px;
+  padding-left: 10px;
   h3{
     font-weight:bold;
     margin-bottom:5px
