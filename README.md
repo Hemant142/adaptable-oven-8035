@@ -65,8 +65,8 @@ Start the server
 ```bash
   npm run server
 ```
-
-```How to move to the Admin Page
+How to move to the Admin Page
+```bash
   email: admin123@gmail.com
   password: admin@123
 ```
