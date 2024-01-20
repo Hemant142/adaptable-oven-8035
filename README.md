@@ -66,6 +66,11 @@ Start the server
   npm run server
 ```
 
+```How to move to the Admin Page
+  email: admin123@gmail.com
+  password: admin@123
+```
+
 ## Screenshots
 
 ## LANDING PAGE
