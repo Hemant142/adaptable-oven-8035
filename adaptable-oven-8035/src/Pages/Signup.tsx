@@ -1,117 +1,120 @@
-import React, { useState,useEffect, Dispatch } from 'react';
+import React, { useState, useEffect, Dispatch } from 'react';
 import { styled } from 'styled-components';
 import B1 from "../Images/B2.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { RootauthState, UserObject } from '../constrain';
-import {useDispatch,useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { getUsers, SignUp } from '../Redux/AuthReducer/action';
-import {  useToast } from '@chakra-ui/react';
+import { useToast } from '@chakra-ui/react';
 import Navbar from '../Components/Navbar';
 
 const Signup = () => {
   const toast = useToast();
- const [user,setUser] = useState<UserObject>({ name:"",
-email: "",password: "",addToCart:[],
-orderPlaced:[],address:[]
+  const [user, setUser] = useState<UserObject>({
+    name: "",
+    email: "", password: "", addToCart: [],
+    orderPlaced: [], address: []
 
-});
-const navigate=useNavigate();
-const dispatch: Dispatch<any> =useDispatch();
-const AllUser =useSelector((store:any)=>store.authReducer.Users)
-// console.log(AllUser)
-useEffect(() => {
+  });
+  const navigate = useNavigate();
+  const dispatch: Dispatch<any> = useDispatch();
+  const AllUser = useSelector((store: any) => store.authReducer.Users)
+  // console.log(AllUser)
+  useEffect(() => {
 
-dispatch(getUsers())
-// getUsers(dispatch)
+    dispatch(getUsers())
+    // getUsers(dispatch)
 
-},[])
-  const handleChange =(e:React.ChangeEvent<HTMLInputElement>)=>{
-const {name,value}=e.target;
-const newUser = {...user,[name]:value};
-setUser(newUser);
+  }, [])
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    const newUser = { ...user, [name]: value };
+    setUser(newUser);
   }
-  
-const handleSubmit =()=>{
+
+  const handleSubmit = () => {
     // console.log("Submit",user)
-    if(user.email === "" || user.password === "" ){
-      // alert("Please enter valid data");
+    if (user.email === "" || user.password === "") {
+
       toast({
-        title: 'valid email',
-        description: 'give valid data.',
-        status: 'warning', 
-        duration: 2000,  
-        isClosable: true, 
+        title: 'Please fill all fields!',
+        description: 'can not leave email and password blank.',
+        status: 'warning',
+        duration: 2000,
+        isClosable: true,
+
       });
 
 
-    }else if (Array.isArray(AllUser)) {
+    } else if (Array.isArray(AllUser)) {
 
-    
-let userPrasent = AllUser.find((el:UserObject)=>{
-  return el.email==user.email;
-})
-// console.log(userPrasent,"user")
-     if(userPrasent){
-      // alert("You already have a account with this email address")
-      toast({
-        title: 'already registered email',
-        description: 'You already have a account with this email address.',
-        status: 'error', 
-        duration: 2000,  
-        isClosable: true, 
-      });
-      setUser({ name:"",
-    email: "",password: "",addToCart:[],
-    orderPlaced:[],address:[]
-    
-    })
-     }else{
-      dispatch(SignUp(user))
-     
 
-      
-      // alert("your registration is successful")
-      setUser({ name:"",
-    email: "",password: "",addToCart:[],
-    orderPlaced:[],address:[]
-    
-    })
-      toast({
-        title: 'Signup Success',
-        description: 'your registration is successful.',
-        status: 'success', 
-        duration: 2000,  
-        isClosable: true, 
-      });
-      navigate("/login");
-     }
+      let userExist = AllUser.find((el: UserObject) => {
+        return el.email === user.email;
+      })
+      // console.log(userExist,"user")
+      if (userExist) {
+        // alert("You already have a account with this email address")
+        toast({
+          title: 'already registered email',
+          description: 'You already have a account with this email address.',
+          status: 'error',
+          duration: 2000,
+          isClosable: true,
+        });
+        setUser({
+          name: "",
+          email: "", password: "", addToCart: [],
+          orderPlaced: [], address: []
+
+        })
+      } else {
+        dispatch(SignUp(user))
+
+
+
+        // alert("your registration is successful")
+        setUser({
+          name: "",
+          email: "", password: "", addToCart: [],
+          orderPlaced: [], address: []
+
+        })
+        toast({
+          title: 'Signup Success',
+          description: 'your registration is successful.',
+          status: 'success',
+          duration: 2000,
+          isClosable: true,
+        });
+        navigate("/login");
+      }
     }
-    
+
   }
-  return (<>  
- 
+  return (<>
+
     <Div>
       <h1>PRECIOUS CHARMS</h1>
-      <h2>JEWELRY SHOP</h2>
+      <h2>JEWELLERY SHOP</h2>
       <div>
         <h2>SIGNUP PAGE</h2>
-       
-        <input type="text" name="name" placeholder='Full Name' value={user.name}onChange={handleChange} />
+
+        <input type="text" name="name" placeholder='Full Name' value={user.name} onChange={handleChange} required />
         <br />
-        <input type="email" name="email" value={user.email}placeholder='Email' onChange={handleChange} />
+        <input type="email" name="email" value={user.email} placeholder='Email' onChange={handleChange} required />
         <br />
-        
-        <input type="password" name="password" value={user.password}placeholder='Password' onChange={handleChange} />
+        <input type="password" name="password" value={user.password} placeholder='Password' onChange={handleChange} required />
         <br />
-       
-       
-        <input type="submit" value="SIGNUP" onClick={handleSubmit}/>
+
+
+        <input type="submit" value="SIGNUP" onClick={handleSubmit} />
         <br />
         <br />
         <span><Link to="/login">Login</Link></span>
       </div>
     </Div>
-    </>
+  </>
   );
 }
 

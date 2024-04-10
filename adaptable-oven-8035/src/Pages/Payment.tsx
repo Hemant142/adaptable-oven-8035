@@ -49,7 +49,7 @@ export const Payment = () => {
   const currentDate = new Date();
   const formattedDate = formatDate(currentDate);
   
-  console.log(formattedDate,"Date");
+  // console.log(formattedDate,"Date");
   // console.log(ActiveUser,"payment")
   const handleOpen = () => {
     setIsOpen(true);

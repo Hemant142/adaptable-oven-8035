@@ -55,6 +55,18 @@ export const Address = () => {
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
+    if (areaData.house_no === "" || areaData.mobile_number === "" || areaData.name === "" || areaData.pincod === "" || areaData.town === "") {
+      toast({
+        title: 'Please fill all fields!',
+        // description: 'your address is added successful.',
+        status: 'warning',
+        duration: 2000,
+        isClosable: true
+      });
+      return;
+    }
+
     if (!userId) {
       alert("Please login first");
       return;
@@ -76,8 +88,6 @@ export const Address = () => {
         )
 
 
-      //  console.log(response)
-      // setLoggedInUser(updatedUser);
       navigate("/payment")
       toast({
         title: 'Address Success',
@@ -102,9 +112,6 @@ export const Address = () => {
     if (ActiveUser.address.length !== 0) {
       setareaData(ad[ad.length - 1])
     }
-
-
-
   }, [])
 
 
@@ -138,12 +145,11 @@ export const Address = () => {
                 <div className="address-card-details">
                   <h3>Full Name - {ActiveUser.address[ActiveUser.address.length - 1].name}</h3>
                   <p>Mobile - {ActiveUser.address[ActiveUser.address.length - 1].mobile_number}</p>
-                  <p>Pincode - {ActiveUser.address[ActiveUser.address.length - 1].pincod}</p>
+                  <p>Pin code - {ActiveUser.address[ActiveUser.address.length - 1].pincod}</p>
                   <p>Address - {ActiveUser.address[ActiveUser.address.length - 1].house_no}</p>
                   <p>Area - {ActiveUser.address[ActiveUser.address.length - 1].area}</p>
                   <p>Town - {ActiveUser.address[ActiveUser.address.length - 1].town}</p>
                   <div>
-
                   </div>
                 </div>
 
@@ -160,27 +166,27 @@ export const Address = () => {
 
                   <div className="form-group">
                     <label htmlFor="name" >Full Name</label>
-                    <input type="text" id="name" required name="name" value={areaData.name} onChange={handleChange} />
+                    <input type="text" id="name" name="name" value={areaData.name} onChange={handleChange} required />
                   </div>
                   <div className="form-group">
                     <label htmlFor="address">Mobile number</label>
-                    <input type="text" id="address" required name="mobile_number" value={areaData.mobile_number} onChange={handleChange} />
+                    <input type="text" id="address" name="mobile_number" value={areaData.mobile_number} onChange={handleChange} required />
                   </div>
                   <div className="form-group">
                     <label htmlFor="city">Pincode</label>
-                    <input type="text" id="city" required name="pincod" value={areaData.pincod} onChange={handleChange} />
+                    <input type="text" id="city" name="pincod" value={areaData.pincod} onChange={handleChange} required />
                   </div>
                   <div className="form-group">
                     <label htmlFor="zip">Flat, House no., Building, Company, Apartment</label>
-                    <input type="text" id="zip" required name="house_no" value={areaData.house_no} onChange={handleChange} />
+                    <input type="text" id="zip" name="house_no" value={areaData.house_no} onChange={handleChange} required />
                   </div>
                   <div className="form-group">
                     <label htmlFor="country">Area, Street, Sector, Village</label>
-                    <input type="text" id="country" required name="area" value={areaData.area} onChange={handleChange} />
+                    <input type="text" id="country" name="area" value={areaData.area} onChange={handleChange} required />
                   </div>
                   <div className="form-group">
                     <label htmlFor="country">Town/City</label>
-                    <input type="text" id="country" required name="town" value={areaData.town} onChange={handleChange} />
+                    <input type="text" id="country" name="town" value={areaData.town} onChange={handleChange} required />
                   </div>
                   <Link to={"/payment"}> <button type="submit" onClick={handleSubmit}>Proceed to Payment</button></Link>
 

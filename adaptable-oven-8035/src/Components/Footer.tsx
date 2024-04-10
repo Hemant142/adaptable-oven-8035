@@ -1,63 +1,55 @@
 import React from 'react'
 import styled from 'styled-components';
 import logo from "../home-image/logo-white.png"
-import { FaFacebookF ,FaInstagram,FaPinterest,FaTelegramPlane} from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaPinterest, FaTelegramPlane } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
     <DIV>
-      
-<div className="footerSec">
-      <div className="logosec">
 
-        <img src={logo} alt="" />
-        <br /><br /><br />  <br /><br />
-      <div className='socialUl'>
-            <FaFacebookF/>
-          <FaInstagram/>
-          <FaPinterest/>
-          <FaTelegramPlane/> 
-      </div>
-        
-      </div>
+      <div className="footerSec">
+        <div className="logosec">
 
-
-
-      <div className="link">
-          <div className="first">
-                <ul>
-                <Link to="/about">About Us</Link>
-                  <li>Service</li>
-                  <li>Return</li>
-                  <li>Terms of Use</li>
-                  <li>How to Order</li>
-                </ul>
+          <img src={logo} alt="" />
+          <br /><br /><br />  <br /><br />
+          <div className='socialUl'>
+            <li><FaFacebookF /></li>
+            <li><FaInstagram /> </li>
+            <li><FaPinterest /></li>
+            <li><FaTelegramPlane /></li>
           </div>
-            <div className="second">
+        </div>
+
+
+
+        <div className="link">
+          <div className="first">
             <ul>
-                 <Link to="/product/Jewelry?category=Rings"><li>Rings</li></Link> 
-                 <Link to="/product/Jewelry?category=Brecelets"><li>Bracelets</li></Link> 
-                 <Link to={"/product/Jewelry?category=Earrning"}><li>Earrings</li></Link> 
-                 <Link to="/product/Jewelry?category=Necklaces+%26+Pendants"><li>Necklace & Pendants</li></Link> 
-                 <Link to="/product/Watches"><li>Watches</li></Link> 
-           </ul>
+              <li><Link to="/about">About Us</Link></li>
+              <li>Service</li>
+              <li>Return</li>
+              <li>Terms of Use</li>
+              <li>How to Order</li>
+            </ul>
+          </div>
+          <div className="second">
+            <ul>
+              <Link to="/product/Jewelry?category=Rings"><li>Rings</li></Link>
+              <Link to="/product/Jewelry?category=Brecelets"><li>Bracelets</li></Link>
+              <Link to={"/product/Jewelry?category=Earrning"}><li>Earrings</li></Link>
+              <Link to="/product/Jewelry?category=Necklaces+%26+Pendants"><li>Necklace & Pendants</li></Link>
+              <Link to="/product/Watches"><li>Watches</li></Link>
+            </ul>
+          </div>
+        </div>
+        <div className="last">
+          <h1>Discover The latest Collection , news and exclusive launches</h1>
+          {/* <br /> */}
+          <p> Copyright @ 2023 by Precious Charms</p>
+        </div>
 
-
-            </div>
       </div>
-
-
-
-
-      <div className="last">
-
-        <h1>Discover The latest Collection , news and exclusive launches</h1>
-        <br /><br /><br /><br /><br />
-        <p>@ 2023 by Precious Charms</p>
-      </div>
-
-</div>
 
 
     </DIV>
@@ -75,6 +67,10 @@ padding: 30px 0;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
+    
+  }
+  .logosec{
+    text-align: left;
   }
 
   .logosec,.link,.last{
@@ -94,8 +90,13 @@ padding: 30px 0;
 
 .socialUl li{
   display: inline;
-    padding: 10px 17px;
 }
+
+.socialUl li:hover{
+  color:#883030;
+  cursor: pointer;
+}
+
 
 
 .link{
@@ -118,13 +119,17 @@ padding: 12px 0;
 .last h1,.last p{
   color:#c1c1c1;
 }
-@media screen and (min-device-width: 310px) and (max-device-width: 480px) { 
+@media screen and (min-device-width: 310px) and (max-device-width: 530px) { 
   .footerSec{
     flex-direction: column;
+   
   }
+
+
   .logosec,.link,.last{
     width:90%
   }
 }
+
 `
 

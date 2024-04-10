@@ -96,7 +96,7 @@ const AddToCard = () => {
           <div className="cart">
             <h1>YOUR CART({cartItem.length})</h1>
           </div>
-          <div>
+          <div className="cartItem">
             {cartItem == undefined || cartItem.length == 0 ? (
               <div className="emptycart">YOUR BAG IS EMPTY</div>
             ) : (
@@ -219,6 +219,11 @@ const Div = styled.div`
     font-size: 25px;
     text-align: center;
   }
+  .cartItem{
+    width: 100%;
+    
+  }
+
   #IK {
     /* border:1px solid; */
     display: flex;
@@ -227,11 +232,15 @@ const Div = styled.div`
   }
   .List {
     width: 80%;
+    margin-top: 20px;
   }
   .checkout {
-    padding: 25px;
+    padding: 23px;
     border-radius: 10px;
     background-image: url(${B4});
+    margin-left: 5px;
+    margin-top: 20px;
+    height: 785px;
   }
   .free {
     width: 100%;
@@ -244,6 +253,7 @@ const Div = styled.div`
     background-color: #e5dfdf;
     border-radius: 10px;
     padding: 20px;
+    
   }
   h1 {
     font-size: 20px;
