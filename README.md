@@ -8,7 +8,7 @@ Precious Charms is an e-commerce website specializing in jewelry, watches, and a
 
 
 ## Deployed Link
-[Vercel Deployed Link:  PRECIOUS CHARMS](https://precious-and-charms.vercel.app/)
+[Vercel Deployed Link:  PRECIOUS CHARMS](https://6616c3a6149a0912f47e0bf4--neon-entremet-0f44b6.netlify.app/)
 
 ## API Link
 [Server Link:  PRECIOUS CHARMS](https://monkeyapi-2-0.onrender.com/)
