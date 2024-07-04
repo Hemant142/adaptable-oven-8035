@@ -21,6 +21,7 @@ Precious Charms is an e-commerce website specializing in jewelry, watches, and a
    <img src="https://img.shields.io/badge/chakraui-text?style=for-the-badge&logo=chakraui&color=204456" />
  <img src="https://img.shields.io/badge/HTML5-text?style=for-the-badge&logo=HTML5&color=2b3b35" />
   <img src="https://img.shields.io/badge/javascript-text?style=for-the-badge&logo=javascript&color=204456" />
+  <img src="https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white" />
 </div>
 
 ## Features
